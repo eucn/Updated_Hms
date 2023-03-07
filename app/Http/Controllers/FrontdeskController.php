@@ -56,6 +56,9 @@ class FrontdeskController extends Controller
         return view('frontdesk.frontdesk_register');
     }
 
+
+
+
     //Handle an incoming registration request.
     public function FrontdeskRegisterCreate(Request $request): RedirectResponse {
         $request->validate([

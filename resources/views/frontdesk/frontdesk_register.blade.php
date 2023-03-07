@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
      <!-- Logo -->
-  <link rel="icon" type="image/png" sizes="16x16" href="../images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/sitelogo.png">
     <style>
         .toggle-password-eye {
     float: right;
@@ -104,5 +104,5 @@
             </div>
         </div>
 </body>
-<script src= "{{url('js/main.js')}}"></script>
+<script src= "{{url('js1/eyevisibility.js')}}"></script>
 </html>
