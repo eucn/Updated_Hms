@@ -131,34 +131,24 @@
 
       <li class="nav-item">
         <a class="nav-link nav-link-icon collapsed" href="#">
-          <i class="fa-solid fa-bed icon-nav"></i>
+          <i class="fa-solid fa-bell icon-nav"></i>
           <span>Reservation</span>
         </a>
       </li><!-- End Manage Rooms Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
-          <i class="fa-regular fa-file icon-nav"></i>
+          <i class="fa-regular fa-credit-card icon-nav"></i>
           <span>Payment</span>
         </a>
       </li><!-- End Booking History Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="fa-solid fa-user icon-nav"></i><span>Accounts</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed"  href="#">
+          <i class="fa-solid fa-memo-circle-info icon-nav"></i>
+          <span>Booking Details</span>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>Frontdesk</span>
-            </a>
-          </li>
-          <li>
-            <a href="tables-data.html">
-              <i class="bi bi-circle"></i><span>Guest</span>
-            </a>
-          </li>
-        </ul>
+       
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
