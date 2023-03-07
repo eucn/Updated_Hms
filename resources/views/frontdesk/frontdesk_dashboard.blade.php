@@ -132,14 +132,14 @@
       <li class="nav-item">
         <a class="nav-link nav-link-icon collapsed" href="#">
           <i class="fa-solid fa-bed icon-nav"></i>
-          <span>Manage Rooms</span>
+          <span>Reservation</span>
         </a>
       </li><!-- End Manage Rooms Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
           <i class="fa-regular fa-file icon-nav"></i>
-          <span>Booking History</span>
+          <span>Payment</span>
         </a>
       </li><!-- End Booking History Nav -->
 
