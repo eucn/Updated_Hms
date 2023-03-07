@@ -81,6 +81,8 @@ Route::prefix('frontdesk')->group(function (){
 
     Route::get('/register', [FrontdeskController::class, 'FrontdeskRegister'])->name('frontdesk.register');
     Route::post('/register/create',[FrontdeskController::class, 'FrontdeskRegisterCreate'])->name('frontdesk.register.create');
+
+   // Route::get('/register', [FrontdeskController::class, 'FrontdeskRegister'])->name('frontdesk.payment');
 });
 //-------------- End Frontdesk Routes --------------//
 
