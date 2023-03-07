@@ -152,8 +152,8 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
-          <i class="fa-regular fa-file-lines icon-nav"></i>
+        <a class="nav-link collapsed"  href="index.html">
+          <i class="fa-solid fa-file-lines icon-nav"></i>
           <span>Reports</span>
         </a>
       </li><!-- End Reports Nav -->
@@ -186,11 +186,11 @@
               <div class="card info-card sales-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Registered Guest Users</h5>
+                  <h5 class="card-title">Confirmed Booking</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-user"></i>
+                      <i class="fa-solid fa-check-to-slot"></i>
                     </div>
                     <div class="ps-3">
                       <h6>2</h6>
@@ -207,11 +207,11 @@
               <div class="card info-card revenue-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Registered Frontdesk Users</h5>
+                  <h5 class="card-title">Guest Today</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-user"></i>
+                      <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
                       <h6>2</h6>
@@ -228,7 +228,7 @@
               <div class="card info-card room-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Rooms</h5>
+                  <h5 class="card-title">Available Room Today</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
