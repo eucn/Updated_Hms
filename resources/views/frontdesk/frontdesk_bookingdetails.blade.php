@@ -219,10 +219,11 @@
                 <thead class="bg-[#36ae7c] text-white">   
                     <tr style="text-align:center">   
                         <th scope="col">No.</th>
-                        <th scope="col">Name</th>
-                        <th scope="col" style="width: 200px;">Check-in Date</th>
-                        <th scope="col">Maximum Check-out Date</th>
+                        <th scope="col"style="width: 200px;">Name</th>
                         <th scope="col">Payment Method</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Check-in Date</th>
+                        <th scope="col">Check-out Date</th>
                         <th scope="col">Action</th>
                         
                     </tr>   
