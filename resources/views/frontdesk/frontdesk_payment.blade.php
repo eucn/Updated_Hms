@@ -137,14 +137,14 @@
       </li><!-- End Manage Rooms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('frontdesk.payment') }}">
+        <a class="nav-link " href="{{ route('frontdesk.payment') }}">
           <i class="fa-regular fa-credit-card icon-nav"></i>
           <span>Payment</span>
         </a>
       </li><!-- End Booking History Nav -->
 
       <li class="nav-item">
-        <a class="nav-link "  href="{{ route('frontdesk.bookingdetails') }}">
+        <a class="nav-link collapsed"  href="{{ route('frontdesk.bookingdetails') }}">
           <i class="fa-solid fa-memo-circle-info icon-nav"></i>
           <span>Booking Details</span>
         </a>
@@ -165,16 +165,17 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Booking Details</h1>
+      <h1>Payment</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Booking Details</li>
+          <li class="breadcrumb-item active">Payment</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    
+   
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

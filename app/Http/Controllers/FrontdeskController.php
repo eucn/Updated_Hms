@@ -84,4 +84,7 @@ class FrontdeskController extends Controller
     public function FrontdeskReports(){
         return view('frontdesk.frontdesk_reports');
     }
+    public function FrontdeskPayment(){
+        return view('frontdesk.frontdesk_payment');
+    }
     }

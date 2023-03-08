@@ -84,6 +84,7 @@ Route::prefix('frontdesk')->group(function (){
     Route::get('/reservation', [FrontdeskController::class, 'FrontdeskReservation'])->name('frontdesk.reservation');
     Route::get('/bookingdetails', [FrontdeskController::class, 'FrontdeskBookingDetails'])->name('frontdesk.bookingdetails');
     Route::get('/reports', [FrontdeskController::class, 'FrontdeskReports'])->name('frontdesk.reports');
+    Route::get('/payment', [FrontdeskController::class, 'FrontdeskPayment'])->name('frontdesk.payment');
 });
 //-------------- End Frontdesk Routes --------------//
 

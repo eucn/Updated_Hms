@@ -137,7 +137,7 @@
       </li><!-- End Manage Rooms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+        <a class="nav-link collapsed" href="{{ route('frontdesk.payment') }}">
           <i class="fa-regular fa-credit-card icon-nav"></i>
           <span>Payment</span>
         </a>
