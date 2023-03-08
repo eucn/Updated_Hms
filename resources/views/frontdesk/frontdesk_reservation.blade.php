@@ -123,7 +123,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ route('frontdesk.reservation') }}">
+        <a class="nav-link " href="{{ route ('frontdesk.dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>

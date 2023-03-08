@@ -75,4 +75,7 @@ class FrontdeskController extends Controller
         // return redirect('/frontdesk/login');
         return redirect()->route('frontdesk_login_form');
     }
+    public function FrontdeskReservation(){
+        return view('frontdesk.frontdesk_reservation');
+}
 }
