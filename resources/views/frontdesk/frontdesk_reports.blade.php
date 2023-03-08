@@ -145,7 +145,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed"  href="{{ route('frontdesk.bookingdetails') }}">
-          <i class="fa-solid fa-memo-circle-info icon-nav"></i>
+          <i class="fa-solid fa-book-open-reader icon-nav"></i>
           <span>Booking Details</span>
         </a>
        

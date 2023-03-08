@@ -145,7 +145,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed"  href="{{ route('frontdesk.bookingdetails') }}">
-          <i class="fa-solid fa-memo-circle-info icon-nav"></i>
+          <i class="fa-solid fa-book-open-reader icon-nav"></i>
           <span>Booking Details</span>
         </a>
        
@@ -174,7 +174,63 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+         
+       
+          <div class="d-flex justify-content-between mb-3">
+            <div class="row mt-3">
+        <div class="d-flex align-items-center">
+        <b><label for="records_per_page" class="col-auto mr-2" style="position: relative; top: 2px; right: -3px;color:#434242;">Show</label></b>
+            <select name="records_per_page" id="records_per_page" class="form-control mr-2" onchange="window.location.href = this.value;">
+                <option value="{{ url()->current() }}?records_per_page=10"  'selected' : '' }}>10</option>
+                <option value="{{ url()->current() }}?records_per_page=25"  'selected' : '' }}>25</option>
+                <option value="{{ url()->current() }}?records_per_page=50"  'selected' : '' }}>50</option>
+                <option value="{{ url()->current() }}?records_per_page=100"  'selected' : '' }}>100</option>
+            </select>
+            <b><p style="position: relative; top: 8px; left: 1px;color:#434242;">entries</p></b>
+
+    
+        </div>
+            
+        <div class="">
+         
+        </div>
+        
+        </div>
+    
+                      </div>
+                      
+        </div><!-- End Left side columns -->
+        
+
+      </div>
+
+      <div>
+            <br>
+      <table class="table table-condensed table-sm table-bordered">   
+                <thead class="bg-[#36ae7c] text-white">   
+                    <tr style="text-align:center">   
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col" style="width: 200px;">Check-in Date</th>
+                        <th scope="col">Maximum Check-out Date</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Action</th>
+                        
+                    </tr>   
+                </thead>   
+                </tbody>   
+            </table>
+</div>
    
+    </section>
+    
+    <hr style="border-top: 1px solid #3C4048; width: 1150px; position:relative; top: -90px;">
 
   </main><!-- End #main -->
 
