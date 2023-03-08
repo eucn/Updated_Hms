@@ -104,5 +104,5 @@
             </div>
         </div>
 </body>
-<script src= "{{url('js/main.js')}}"></script>
+<script src= "{{url('js1/eyevisibility.js')}}"></script>
 </html>

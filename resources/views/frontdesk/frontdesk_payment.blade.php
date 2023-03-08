@@ -6,6 +6,9 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   @vite('resources/css/app.css')
 
+  <!-- Logo -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/sitelogo.png">
+
   <title>Frontdesk Dashboard</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -213,7 +216,7 @@
       <div>
             <br>
       <table class="table table-condensed table-sm table-bordered">   
-                <thead class="bg-[#36ae7c] text-white">   
+                <thead class="bg-[#51bdb8] text-white">   
                     <tr style="text-align:center">   
                         <th scope="col">No.</th>
                         <th scope="col">Name</th>

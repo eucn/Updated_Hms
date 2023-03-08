@@ -216,7 +216,7 @@
       <div>
             <br>
       <table class="table table-condensed table-sm table-bordered">   
-                <thead class="bg-[#36ae7c] text-white">   
+                <thead class="bg-[#51bdb8] text-white">   
                     <tr style="text-align:center">   
                         <th scope="col">No.</th>
                         <th scope="col"style="width: 200px;">Name</th>
