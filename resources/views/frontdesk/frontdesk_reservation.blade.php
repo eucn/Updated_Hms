@@ -123,14 +123,14 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ route ('frontdesk.dashboard') }}">
+        <a class="nav-link collapsed" href="{{ route ('frontdesk.dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link nav-link-icon collapsed" href="{{ route('frontdesk.reservation') }}">
+        <a class="nav-link nav-link-icon " href="{{ route('frontdesk.reservation') }}">
           <i class="fa-solid fa-bell icon-nav"></i>
           <span>Reservation</span>
         </a>
@@ -152,7 +152,7 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="index.html">
+        <a class="nav-link collapsed"  href="{{ route('frontdesk.reports') }}">
           <i class="fa-solid fa-file-lines icon-nav"></i>
           <span>Reports</span>
         </a>
@@ -169,7 +169,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Reservation</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

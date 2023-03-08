@@ -144,7 +144,7 @@
       </li><!-- End Booking History Nav -->
 
       <li class="nav-item">
-        <a class="nav-link "  href="{{ route('frontdesk.bookingdetails') }}">
+        <a class="nav-link collapsed"  href="{{ route('frontdesk.bookingdetails') }}">
           <i class="fa-solid fa-memo-circle-info icon-nav"></i>
           <span>Booking Details</span>
         </a>
@@ -152,7 +152,7 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="{{ route('frontdesk.reports') }}">
+        <a class="nav-link "  href="{{ route('frontdesk.reports') }}">
           <i class="fa-solid fa-file-lines icon-nav"></i>
           <span>Reports</span>
         </a>

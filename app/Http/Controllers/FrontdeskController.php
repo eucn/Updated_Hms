@@ -77,8 +77,11 @@ class FrontdeskController extends Controller
     }
     public function FrontdeskReservation(){
         return view('frontdesk.frontdesk_reservation');
-}
-public function FrontdeskBookingDetails(){
-    return view('frontdesk.frontdesk_bookingdetails');
-}
-}
+    }
+    public function FrontdeskBookingDetails(){
+        return view('frontdesk.frontdesk_bookingdetails');
+    }
+    public function FrontdeskReports(){
+        return view('frontdesk.frontdesk_reports');
+    }
+    }
