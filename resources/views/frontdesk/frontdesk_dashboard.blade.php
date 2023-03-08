@@ -144,7 +144,7 @@
       </li><!-- End Booking History Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="#">
+        <a class="nav-link collapsed"  href="{{ route('frontdesk.bookingdetails') }}">
           <i class="fa-solid fa-memo-circle-info icon-nav"></i>
           <span>Booking Details</span>
         </a>
