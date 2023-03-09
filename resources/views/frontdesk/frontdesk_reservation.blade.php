@@ -173,16 +173,13 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <h2 style="position: relative; left: 11px; font-size: 20px; font-weight: bold;">Reservation</h2>
+
                         <hr  style="border-top: 2px solid #3C4048;position: relative; left: 11x;">
-    <section>
-              
-              <div class="container mx-auto pt-10 px-4 sm:px-6 lg:px-8">
+    <section class="col-md-11 mx-auto">
+              <div class="container  px-4 sm:px-6 lg:px-8">
                   <form > 
-                      @csrf
                     <!-- Flex container -->
                     <div class="justify-between mx-[50px]">
-
                       <!-- Logo -->
                       <div class="mx-auto mt-8"  style="width:1000px;  position: relative; left: -70px;">
                         <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 295px;">
@@ -258,7 +255,7 @@
 
                       <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4" style="width:1000px; position: relative; left: -70px;">
                         <div class="border-b-2 border-gray-300 px-4 py-3">
-                          <h3 class="text-lg sm:text-2xl font-semibold">Guest Information</h3>
+                          <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
                         </div>
                 
                         <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
@@ -362,7 +359,7 @@
                           });
                           </script>
                           </div>
-                          <div class="flex justify-end mt-20">
+                          <div class="flex justify-end mt-10">
                               <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button>
                             </div> 
                           </div>
