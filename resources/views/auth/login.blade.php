@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>Login</title>
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Logo -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/sitelogo.png">
+
+  <style>
+        .toggle-password-eye {
+    float: right;
+    top: -25px;
+    right: 10px;
+    position: relative;
+    cursor: pointer;
+    color:#404040;
+}
+        </style>
 </head>
 <body>
     <!-- Session Status -->
@@ -68,4 +84,5 @@
         </div>
     </div>
 </body>
+<script src= "{{url('js1/eyevisibility.js')}}"></script>
 </html>

@@ -5,11 +5,6 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   @vite('resources/css/app.css')
- <!-- Logo -->
-<link rel="icon" type="image/png" sizes="16x16" href="../images/sitelogo.png">
-    
-<link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <title>Frontdesk Dashboard</title>
   <meta content="" name="description">
@@ -128,7 +123,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ route('frontdesk.reservation') }}">
+        <a class="nav-link collapsed" href="{{ route ('frontdesk.dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -157,7 +152,7 @@
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="{{ route('frontdesk.reports') }}">
+        <a class="nav-link "  href="{{ route('frontdesk.reports') }}">
           <i class="fa-solid fa-file-lines icon-nav"></i>
           <span>Reports</span>
         </a>
@@ -170,90 +165,15 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Reports</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Reports</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-12">
-          <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card sales-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Confirmed Booking</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-check-to-slot"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>2</h6>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card revenue-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Guest Today</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-users"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>2</h6>
-                     
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Rooms Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card room-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Available Room Today</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-bed"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>2</h6>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Room Card -->
-
-          </div>
-        </div><!-- End Left side columns -->
-
-      </div>
-    </section>
 
   </main><!-- End #main -->
 

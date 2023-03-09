@@ -5,11 +5,6 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   @vite('resources/css/app.css')
- <!-- Logo -->
-<link rel="icon" type="image/png" sizes="16x16" href="../images/sitelogo.png">
-    
-<link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <title>Frontdesk Dashboard</title>
   <meta content="" name="description">
@@ -128,7 +123,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ route('frontdesk.reservation') }}">
+        <a class="nav-link collapsed" href="{{ route ('frontdesk.dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -149,7 +144,7 @@
       </li><!-- End Booking History Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="{{ route('frontdesk.bookingdetails') }}">
+        <a class="nav-link "  href="{{ route('frontdesk.bookingdetails') }}">
           <i class="fa-solid fa-book-open-reader icon-nav"></i>
           <span>Booking Details</span>
         </a>
@@ -170,11 +165,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Booking Details</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Booking Details</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -185,76 +180,64 @@
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
+         
+       
+          <div class="d-flex justify-content-between mb-3">
+            <div class="row mt-3">
+        <div class="d-flex align-items-center">
+        <b><label for="records_per_page" class="col-auto mr-2" style="position: relative; top: 2px; right: -3px;color:#434242;">Show</label></b>
+            <select name="records_per_page" id="records_per_page" class="form-control mr-2" onchange="window.location.href = this.value;">
+                <option value="{{ url()->current() }}?records_per_page=10"  'selected' : '' }}>10</option>
+                <option value="{{ url()->current() }}?records_per_page=25"  'selected' : '' }}>25</option>
+                <option value="{{ url()->current() }}?records_per_page=50"  'selected' : '' }}>50</option>
+                <option value="{{ url()->current() }}?records_per_page=100"  'selected' : '' }}>100</option>
+            </select>
+            <b><p style="position: relative; top: 8px; left: 1px;color:#434242;">entries</p></b>
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card sales-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Confirmed Booking</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-check-to-slot"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>2</h6>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card revenue-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Guest Today</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-users"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>2</h6>
-                     
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Rooms Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card room-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Available Room Today</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-bed"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>2</h6>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Room Card -->
-
-          </div>
+    
+        </div>
+        
+    
+      
+        
+        <div class="">
+         
+        </div>
+        
+        </div>
+    
+                      </div>
+                      
         </div><!-- End Left side columns -->
+        
 
       </div>
-    </section>
 
+      <div>
+            <br>
+      <table class="table table-condensed table-sm table-bordered">   
+                <thead class="bg-[#51bdb8] text-white">   
+                    <tr style="text-align:center">   
+                        <th scope="col">No.</th>
+                        <th scope="col"style="width: 200px;">Name</th>
+                        <th scope="col">Payment Method</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Check-in Date</th>
+                        <th scope="col">Check-out Date</th>
+                        <th scope="col">Action</th>
+                        
+                    </tr>   
+                </thead>   
+                </tbody>   
+            </table>
+</div>
+
+
+      
+    </section>
+    
+    <hr style="border-top: 1px solid #3C4048; width: 1150px; position:relative; top: -90px;">
+    
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
