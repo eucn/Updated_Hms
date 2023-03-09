@@ -360,16 +360,31 @@
                           </script>
                           </div>
                           <div class="flex justify-end mt-10">
-                              <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button>
+                            
+                              <!-- <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button> -->
+                              <button type="button" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal" data-bs-target="#modalDialogScrollable">
+                                CONTINUE
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
+                                  <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h4 class="modal-title">Room Booking</h4>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  
+                                      </div>  
+                                    </div> 
+                                 </div>
                             </div> 
+
                           </div>
                       </div>  
                   </div>
               </form>
           </div> 
       </section>
-
-   
 
   </main><!-- End #main -->
 
