@@ -197,7 +197,7 @@
                             </script>
                             </div>
                             <div class="flex justify-end mt-20">
-                                <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button>
+                                <button  class="bg-yellow-500 hover:bg-yellow-600 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button>
                               </div> 
                             </div>
                         </div>  

@@ -135,7 +135,7 @@
                     <div class="flex justify-end">
                       <button
                        {{-- {{ $isRoom1Reserved ? 'disabled' : '' }} type="submit" name="room2"  value="2" --}}
-                      class="inline-flex items-center bg-yellow-500 text-black active:bg-yellow-800 font-semibold text-sm px-3 w-21 py-[10px] rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150 cursor-pointer">
+                      class="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-black active:bg-yellow-800 font-semibold text-sm px-3 w-21 py-[10px] rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150 cursor-pointer">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                       </svg>&nbsp; Details
@@ -171,7 +171,7 @@
                     <div class="flex justify-end">
                       <button type="submit" name="room2"  value="2" 
                       {{-- {{ $isRoom2Reserved ? 'disabled' : '' }}   --}}
-                      class="inline-flex items-center bg-yellow-500 text-black active:bg-yellow-800
+                      class="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-black active:bg-yellow-800
                        {{-- {{ $isRoom2Reserved ? 'bg-gray-400' : '' }}  --}}
                       font-semibold text-sm px-3 w-21 py-[10px] rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150 cursor-pointer">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

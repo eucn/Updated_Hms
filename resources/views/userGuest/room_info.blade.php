@@ -188,8 +188,8 @@
                                     </div>
                                     <div class="py-6 text-center">
                                         <button type="submit"
-                                            class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                            id="next">Send booking request</button>
+                                            class="bg-yellow-500 hover:bg-yellow-600  text-white active:bg-yellow-800 font-bold uppercase text-sm px-[80px] py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                            id="next">Book Now</button>
                                     </div>
                                 </div>
                             </form>
