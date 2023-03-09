@@ -150,11 +150,11 @@
              action="{{ route('view.room2', ['room_id' => 2]) }}" 
              >
                 @csrf
-                  <input type="text" name="check_in_date" value="{{ session('check_in_date') }}" 
+                  <input type="hidden" name="check_in_date" value="{{ session('check_in_date') }}" 
                   class="w-[113px] text-center"/>
-                  <input type="text" name="check_out_date" value="{{ session('check_out_date') }}" 
+                  <input type="hidden" name="check_out_date" value="{{ session('check_out_date') }}" 
                   class="w-[113px] text-center"/>
-                  <input type="text" name="number_of_nights" value="{{ session('number_of_nights') }}" />
+                  <input type="hidden" name="number_of_nights" value="{{ session('number_of_nights') }}" />
                 <div class="relative">
                   <img src="{{ asset('./images/room2.jpg') }}" class="h-[350px] w-144 shadow-xl" alt="">
                   <div class="absolute bg-white h-[200px] w-80 top-60 left-[75px] border-2 border-yellow-500 rounded-md shadow-xl p-3 flex flex-col justify-between">

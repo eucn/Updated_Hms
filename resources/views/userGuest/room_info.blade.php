@@ -143,7 +143,7 @@
                     {{-- right --}}
                     <div class=" bg-gray-300 w-[300px] h-[450px] rounded-md">
                         <div class="">
-                            <input type="text" name="number_of_nights" value="{{ $number_of_nights }}" id="number_of_nights" />
+                            <input type="hidden" name="number_of_nights" value="{{ $number_of_nights }}" id="number_of_nights" />
                                 {{-- <input type="hidden" name="room_id" value="{{ $id }}" id="number_of_nights" /> --}}
                                 <div class="mx-[25px] mt-2">
                                     <div class="py-2  ">
