@@ -42,5 +42,12 @@ class ManageRoomController extends Controller
     public function edit(Manage_Room $room){
         return redirect()->route('admin.room.index', compact('room'));
     }
+     public function destroy($id)
+     {
+         $room = manage_room::findOrFail($id);
+         $room->delete();
+         
+         return redirect()->route('admin.room.index')->with('success', 'Room has been deleted.')->with('rooms', $room);;
+     }
 
 }

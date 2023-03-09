@@ -405,11 +405,11 @@
                                   </div>
                                 </div>
                               </div>
-                              @csrf
-                              @method('DELETE')
-                              
-                              <button type="submit" class="btn btn-danger"><i class='fa fa-trash'></i></button>
-                          </form>
+                              <form action="{{ route('admin.room.destroy', $roomData->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Delete Room</button>
+</form>
                           
                         </td>
                     </tr>
