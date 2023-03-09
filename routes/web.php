@@ -49,7 +49,10 @@ Route::prefix('admin')->group(function (){
             Route::get('/{room}', [RoomController::class, 'show'])->name('admin.room.show');
             Route::get('/{room}/edit', [RoomController::class, 'edit'])->name('admin.room.edit');
             Route::put('/{room}', [RoomController::class, 'update'])->name('admin.room.update');
-            Route::delete('/{room}', [RoomController::class, 'destroy'])->name('admin.room.destroy');
+            Route::delete('/{room}', [ManageRoomController::class, 'destroy'])->name('admin.room.destroy');
+
+            // Route::delete('/admin_delete-rooms/{id}', [ManageRoomController::class, 'destroy'])->name('admin_delete-rooms.destroy');
+
         });
 
     // Rooms
