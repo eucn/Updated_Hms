@@ -65,7 +65,9 @@
       <div class="w-full flex flex-col bg-gray-200 rounded-2xl p-5">
         <div class="md:flex-row justify-center">
           <div class="w-full px-10 mx-auto">
-            <form method="POST" action="{{ route('store.date') }}" class="grid grid-cols-1 gap-2">
+            <form method="POST" 
+            action="{{ route('store.date') }}" 
+            class="grid grid-cols-1 gap-2">
               @csrf
               <div class="py-2">
                 <label class="block text-gray-900 font-medium mb-2" for="check-in-date">Check-in date:</label>
@@ -106,7 +108,9 @@
       <div class="w-full flex flex-col bg-gray-200 rounded-2xl p-5">
         <div class="bg-gray-200 rounded-2xl p-5 flex justify-between">
           <div class="bg-gray-200 rounded-2xl p-5">
-            <form method="POST" action="{{ route('view.room1', ['room_id' => 1]) }}" >
+            <form method="POST" 
+            action="{{ route('view.room1', ['room_id' => 1]) }}" 
+            >
                 @csrf
                   <input type="hidden" name="check_in_date" value="{{ session('check_in_date') }}" 
                   class="w-[113px] text-center"/>
@@ -121,7 +125,9 @@
                     <h1 class="text-black font-extrabold text-3xl">Room 
                       {{$room1->id}}
                     </h1> 
-                    <p class="text-gray-600 text-sm">{{ $room1->room_type }}</p>
+                    <p class="text-gray-600 text-sm">
+                      {{ $room1->room_type }}
+                    </p>
                     <h2 class="text-yellow-500 font-bold text-lg">
                       {{$room1->rate}}
                       / Night</h2>
@@ -140,20 +146,24 @@
               </form>
           </div>
           <div class="bg-gray-200 rounded-2xl p-5">
-            <form method="POST" action="{{ route('view.room2', ['room_id' => 2]) }}" >
+            <form method="POST"
+             action="{{ route('view.room2', ['room_id' => 2]) }}" 
+             >
                 @csrf
-                  <input type="hidden" name="check_in_date" value="{{ session('check_in_date') }}" 
+                  <input type="text" name="check_in_date" value="{{ session('check_in_date') }}" 
                   class="w-[113px] text-center"/>
-                  <input type="hidden" name="check_out_date" value="{{ session('check_out_date') }}" 
+                  <input type="text" name="check_out_date" value="{{ session('check_out_date') }}" 
                   class="w-[113px] text-center"/>
-                  <input type="hidden" name="number_of_nights" value="{{ session('number_of_nights') }}" />
+                  <input type="text" name="number_of_nights" value="{{ session('number_of_nights') }}" />
                 <div class="relative">
                   <img src="{{ asset('./images/room2.jpg') }}" class="h-[350px] w-144 shadow-xl" alt="">
                   <div class="absolute bg-white h-[200px] w-80 top-60 left-[75px] border-2 border-yellow-500 rounded-md shadow-xl p-3 flex flex-col justify-between">
                     <h1 class="text-black font-extrabold text-3xl">Room 
                       {{$room2->id}}
                     </h1>
-                    <p class="text-gray-600 text-sm">{{$room2->room_type}}</p>
+                    <p class="text-gray-600 text-sm">
+                      {{$room2->room_type}}
+                    </p>
                     <h2 class="text-yellow-500 font-bold text-lg">
                       {{ $room2->rate }}
                       / Night</h2>
