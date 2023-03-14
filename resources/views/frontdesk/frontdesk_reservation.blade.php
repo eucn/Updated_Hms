@@ -185,11 +185,7 @@
             <!-- Room Info -->
             <form action="" method="post">
               <div class="mx-auto mt-8" style="width:1000px;  position: relative; left: -110px;">
-<<<<<<< HEAD
-                <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 350px;">
-=======
                 <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 500px;">
->>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                   <div class="border-b-2 border-gray-300 px-4 py-3">
                     <h3 class="text- sm:text-2xl font-semibold">Room Information</h3>
 
@@ -271,11 +267,7 @@
               <div class="grid grid-cols-1 mt-1">
                 <div class=" py-2 flex items-center">
                   <label style="position:relative; top: -80px; left: -95px;"
-<<<<<<< HEAD
-                    class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Nights:</label>
-=======
                     class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Night/s:</label>
->>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                   <input type="" id="number_of_nights" name="number_of_nights"
                     style="font-weight: bold; position: relative; top: -80px; left: -95px;"
                     value="{{ old('number_of_nights') }}"
@@ -292,13 +284,6 @@
                   </div>
                   @endif
                 </div>
-<<<<<<< HEAD
-              </div>
-
-              <!-- Guest Info -->
-              <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
-                style="width:1000px; position: relative; left: -110px;">
-=======
 
                 
               </div>
@@ -330,7 +315,6 @@
               <!-- Guest Info -->
               <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
                 style="width:1000px; position: relative; left: -110px; top: -210px;">
->>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                 <div class="border-b-2 border-gray-300 px-4 py-3">
                   <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
                 </div>
@@ -383,11 +367,7 @@
                 </div>
               </div>
               <!-- Payment Method -->
-<<<<<<< HEAD
-              <div class="mx-auto mt-8" style="width:1000px; position: relative; left: -110px;">
-=======
               <div class="mx-auto mt-8" style="width:1000px; position: relative; left: -110px; top: -210px;">
->>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                 <div class="bg-white rounded-lg shadow-md border-2 w-full ">
                   <div class="border-b-2 border-gray-300 px-4 py-3">
                     <h3 class="text- sm:text-2xl font-semibold">Payment Method</h3>
@@ -533,8 +513,6 @@
       numberOfNights.value = diffDays;
     });
   </script>
-<<<<<<< HEAD
-=======
   
       <script>
         function subtract(inputId) {
@@ -551,7 +529,6 @@
             inputElement.value = currentValue + 1;
         }
     </script>
->>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
 
 </body>
 
