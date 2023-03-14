@@ -88,7 +88,7 @@ button[disabled]:hover {
             </div>
               <div class="flex justify-end my-3 ">
                 <button class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  type="submit" required>Next </button>
+                  type="submit" required>Continue</button>
               </div>
             </form>
           </div>

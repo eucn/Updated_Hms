@@ -10,6 +10,11 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <script
+            data-require="jquery@3.1.1"
+            data-semver="3.1.1"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
   <!-- Favicons -->
   <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon">
   <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
@@ -235,7 +240,7 @@
                
                   <input
                     class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
-                    id="check_in_date" name="check_out_date" type="date" style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray" value="{{ old('check_in_date') }}">
+                    id="check_out_date" name="check_out_date" type="date" style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray" value="{{ old('check_in_date') }}">
                     {{-- <x-input-error :messages="$errors->get('check_out_date')" class="mt-2" /> --}}
                 </div>
 
@@ -259,11 +264,22 @@
                         <div class="grid grid-cols-1 mt-1">
                 <div class=" py-2 flex items-center">
                   <label style = "position:relative; top: -80px; left: -95px;"class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Nights:</label>
-                  <input type="" id="number_of_nights" name="number_of_nights" style="font-weight: bold;" value="{{ old('number_of_nights') }}"
+                  <input type="" id="number_of_nights" name="number_of_nights" style="font-weight: bold; position: relative; top: -80px; left: -95px;" value="{{ old('number_of_nights') }}"
                     class="bg-transparent pointer-events-none rounded py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
                     readonly>
+
+                    @if ($errors->any())
+                <div class="alert alert-danger font-sm text-center">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 </div>
                 </div>
+                
        
                         <!-- Guest Info -->
                       <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4" style="width:1000px; position: relative; left: -110px;">
@@ -428,6 +444,29 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('template/assets/js/main.js') }}"></script>
+
+  {{-- script for date --}}
+    <script>
+      const check_in_date = document.getElementById('check_in_date');
+       const check_out_date = document.getElementById('check_out_date');
+      check_in_date.min = new Date().toISOString().split('T')[0];
+       check_out_date.min = new Date().toISOString().split('T')[0];
+
+    
+    </script>
+
+    <script>
+      const checkInDate = document.getElementById('check_in_date');
+      const checkOutDate = document.getElementById('check_out_date');
+      const numberOfNights = document.getElementById('number_of_nights');
+      checkOutDate.addEventListener('change', function() {
+        const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+        const checkIn = new Date(checkInDate.value);
+        const checkOut = new Date(checkOutDate.value);
+        const diffDays = Math.round(Math.abs((checkOut - checkIn) / oneDay));
+        numberOfNights.value = diffDays;
+      });
+    </script>
 
 </body>
 
