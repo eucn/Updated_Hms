@@ -231,30 +231,6 @@
                         </div>
                       </div>
                     </div>
-
-                    <div class="py-2">
-                      <p class="text-medium font-semibold">Number of Guest</p>
-                      <div class="flex items-center justify-center">
-                          <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="subtract('guest_num')">-</a>
-                          <input readonly type="number" id="guest_num" name="guest_num" value="1"
-                              min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
-                          <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="add('guest_num')">+</a>
-                      </div>
-                  </div>
-                  <div class="py-2">
-                      <p class="text-medium font-semibold">Extra Bed</p>
-                      <div class="flex items-center justify-center mt-2">
-                          <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="subtract('extra_bed')">-</a>
-                          <input readonly type="number" id="extra_bed" name="extra_bed" value="1"
-                              min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
-                          <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="add('extra_bed')">+</a>
-                      </div>
-                  </div>
-
                     <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
                       <div class="flex flex-col lg:flex-row justify-center">
                         <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -145px; ">
@@ -298,6 +274,29 @@
                 @endif
               </div>
             </div>
+          <div class="py-2">
+            <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+            onclick="subtract('guest_num')">-</a>
+         
+         <input readonly type="number" id="guest_num" name="guest_num" value="1"
+                min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
+         
+         <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+            onclick="add('guest_num')">+</a>
+         
+          </div>
+          </div>
+          <div class="py-2">
+            <p class="text-medium font-semibold">Extra Bed</p>
+            <div class="flex items-center justify-center mt-2">
+                <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="subtract('extra_bed')">-</a>
+                <input readonly type="number" id="extra_bed" name="extra_bed" value="1"
+                    min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
+                <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="add('extra_bed')">+</a>
+            </div>
+        </div>
             <!-- Guest Info -->
             <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
               style="width:1000px; position: relative; left: -110px;">
@@ -484,23 +483,22 @@
       numberOfNights.value = diffDays;
     });
   </script>
-  
-{{--  --}}
-<script>
-  function subtract(inputId) {
-      var inputElement = document.getElementById(inputId);
-      var currentValue = parseInt(inputElement.value);
-      if (currentValue > 1) {
-          inputElement.value = currentValue - 1;
-      }
-  }
 
-  function add(inputId) {
-      var inputElement = document.getElementById(inputId);
-      var currentValue = parseInt(inputElement.value);
-      inputElement.value = currentValue + 1;
-  }
-</script>
+  <script>
+    function subtract(inputId) {
+        var inputElement = document.getElementById(inputId);
+        var currentValue = parseInt(inputElement.value);
+        if (currentValue > 1) {
+            inputElement.value = currentValue - 1;
+        }
+    }
+
+    function add(inputId) {
+        var inputElement = document.getElementById(inputId);
+        var currentValue = parseInt(inputElement.value);
+        inputElement.value = currentValue + 1;
+    }
+  </script>
 </body>
 
 </html>
