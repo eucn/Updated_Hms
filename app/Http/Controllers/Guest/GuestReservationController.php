@@ -60,7 +60,7 @@ class GuestReservationController extends Controller
         $reservation = new Reservations();
         $reservation->guest_id = $guest_id;
         $reservation->room_id = $room_id;
-        $reservation->book_status = $booking_status; 
+        $reservation->booking_status = $booking_status; 
         $reservation->nights = $numNights;
         $reservation->checkin_date = $checkin_date;
         $reservation->checkout_date = $checkout_date;

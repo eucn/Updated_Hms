@@ -16,7 +16,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('template/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -32,12 +34,9 @@
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/3a364cef47.js" crossorigin="anonymous"></script>
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"
-      integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp"
-      crossorigin="anonymous">
-    </script>
+  <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"
+    integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous">
+  </script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.0
@@ -144,15 +143,15 @@
       </li><!-- End Booking History Nav -->
 
       <li class="nav-item">
-        <a class="nav-link "  href="{{ route('frontdesk.bookingdetails') }}">
+        <a class="nav-link " href="{{ route('frontdesk.bookingdetails') }}">
           <i class="fa-solid fa-book-open-reader icon-nav"></i>
           <span>Booking Details</span>
         </a>
-       
+
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="{{ route('frontdesk.reports') }}">
+        <a class="nav-link collapsed" href="{{ route('frontdesk.reports') }}">
           <i class="fa-solid fa-file-lines icon-nav"></i>
           <span>Reports</span>
         </a>
@@ -180,64 +179,66 @@
         <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
-         
-       
-          <div class="d-flex justify-content-between mb-3">
-            <div class="row mt-3">
-        <div class="d-flex align-items-center">
-        <b><label for="records_per_page" class="col-auto mr-2" style="position: relative; top: 2px; right: -3px;color:#434242;">Show</label></b>
-            <select name="records_per_page" id="records_per_page" class="form-control mr-2" onchange="window.location.href = this.value;">
-                <option value="{{ url()->current() }}?records_per_page=10"  'selected' : '' }}>10</option>
-                <option value="{{ url()->current() }}?records_per_page=25"  'selected' : '' }}>25</option>
-                <option value="{{ url()->current() }}?records_per_page=50"  'selected' : '' }}>50</option>
-                <option value="{{ url()->current() }}?records_per_page=100"  'selected' : '' }}>100</option>
-            </select>
-            <b><p style="position: relative; top: 8px; left: 1px;color:#434242;">entries</p></b>
 
-    
+            <div class="d-flex justify-content-between mb-3">
+              <div class="row mt-3">
+                <div class="d-flex align-items-center">
+                  <b><label for="records_per_page" class="col-auto mr-2"
+                      style="position: relative; top: 2px; right: -3px;color:#434242;">Show</label></b>
+                  <select name="records_per_page" id="records_per_page" class="form-control mr-2"
+                    onchange="window.location.href = this.value;">
+                    <option value="{{ url()->current() }}?records_per_page=10" 'selected' : '' }}>10</option>
+                    <option value="{{ url()->current() }}?records_per_page=25" 'selected' : '' }}>25</option>
+                    <option value="{{ url()->current() }}?records_per_page=50" 'selected' : '' }}>50</option>
+                    <option value="{{ url()->current() }}?records_per_page=100" 'selected' : '' }}>100</option>
+                    {{-- <option value="100">10</option>
+                    <option value="100">25</option>
+                    <option value="100">50</option>
+                    <option value="100">100</option> --}}
+                  </select>
+                  <b>
+                    <p style="position: relative; top: 8px; left: 1px;color:#434242;">entries</p>
+                  </b>
+                </div>
+                <div class="">
+                </div>
+              </div>
+            </div>
+          </div><!-- End Left side columns -->
         </div>
-        
-    
-      
-        
-        <div class="">
-         
+        <div>
+          <br>
+          <table class="table table-condensed table-sm table-bordered">
+            <thead class="bg-[#51bdb8] text-white">
+              <tr style="text-align:center">
+                <th scope="col">No.</th>
+                <th scope="col" style="width: 200px;">Name</th>
+                <th scope="col">Payment Method</th>
+                <th Booking scope="col">Booking Status</th>
+                <th scope="col">Check-in / Check-out Date</th>  
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($reservationData as $index => $data)
+                  <tr style="text-align:center" >
+                    <td  scope="col">{{ $index + 1 }}</td>
+                      <td scope="col">{{ $data->first_name }} &nbsp; {{ $data->last_name }}</td>
+                      <td scope="col">{{ $data->payment_method }}</td>
+                      <td scope="col">{{ $data->booking_status }}</td>
+                      <td scope="col"> {{ \Carbon\Carbon::parse($data->checkin_date)->format('M j') }} &nbsp; - &nbsp;
+                        {{ \Carbon\Carbon::parse($data->checkout_date)->format('F j, Y') }}
+                      </td> 
+                 
+                      <td scope="col"></td>
+                  </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
-        
-        </div>
-    
-                      </div>
-                      
-        </div><!-- End Left side columns -->
-        
-
-      </div>
-
-      <div>
-            <br>
-      <table class="table table-condensed table-sm table-bordered">   
-                <thead class="bg-[#51bdb8] text-white">   
-                    <tr style="text-align:center">   
-                        <th scope="col">No.</th>
-                        <th scope="col"style="width: 200px;">Name</th>
-                        <th scope="col">Payment Method</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Check-in Date</th>
-                        <th scope="col">Check-out Date</th>
-                        <th scope="col">Action</th>
-                        
-                    </tr>   
-                </thead>   
-                </tbody>   
-            </table>
-</div>
-
-
-      
     </section>
-    
-    <hr style="border-top: 1px solid #3C4048; width: 1150px; position:relative; top: -90px;">
-    
+
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -248,7 +249,8 @@
 
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('template/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>

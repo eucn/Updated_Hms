@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontdeskController;
 use App\Http\Controllers\Admin\ManageRoomController;
 use App\Http\Controllers\Admin\MRoomController;
+use App\Http\Controllers\FrontdeskReservationController;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\Guest\GuestReservationController;
 use App\Http\Controllers\Guest\GuestInformationController;
@@ -87,7 +88,7 @@ Route::prefix('frontdesk')->group(function (){
 
     Route::get('/register', [FrontdeskController::class, 'FrontdeskRegister'])->name('frontdesk.register');
     Route::post('/register/create',[FrontdeskController::class, 'FrontdeskRegisterCreate'])->name('frontdesk.register.create');
-    Route::get('/reservation', [FrontdeskController::class, 'FrontdeskReservation'])->name('frontdesk.reservation');
+    Route::get('/reservation', [FrontdeskReservationController::class, 'FrontdeskReservation'])->name('frontdesk.reservation');
     Route::get('/bookingdetails', [FrontdeskController::class, 'FrontdeskBookingDetails'])->name('frontdesk.bookingdetails');
     Route::get('/reports', [FrontdeskController::class, 'FrontdeskReports'])->name('frontdesk.reports');
     Route::get('/payment', [FrontdeskController::class, 'FrontdeskPayment'])->name('frontdesk.payment');
