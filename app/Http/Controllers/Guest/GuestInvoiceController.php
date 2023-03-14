@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
 class GuestInvoiceController extends Controller
 {
     public function view_invoice() {
-
         $reservation = Reservations::where('guest_id', auth()->user()->id)->latest()->first();
         $guestRegistration = GuestInformation::where('guest_id', auth()->user()->id)->latest()->first();
         // $rooms = Rooms::where('guest_id', auth()->user()->id)->latest()->first();
@@ -23,15 +22,8 @@ class GuestInvoiceController extends Controller
                   ->first();
         })->first();
         
-        // if ($rooms) {
-        //     $roomType = $rooms->room_type;
-        //     // use $roomType variable to display the room type
-        // } else {
-        //     // handle the case when the room is not found
-        // }
-        
-        // Pass the reservation data to the invoice view
-        return view('userGuest.invoice', [
+
+        return view('userGuest.guest_invoice', [
             'reservation' => $reservation,
             'guestRegistration' => $guestRegistration,
             'rooms' => $rooms,

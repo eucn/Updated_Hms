@@ -150,7 +150,7 @@
                                         <p class="text-medium font-semibold">Check-in</p>
                                         <div class="input-group date">
                                             <input readonly type="date" name="check_in_date"
-                                                value="{{ $check_in_date }}" 
+                                            value="{{ $check_in_date }}"
                                                 class="w-[250px] text-center" id="check_in"
                                                 required="required" />
                                         </div>

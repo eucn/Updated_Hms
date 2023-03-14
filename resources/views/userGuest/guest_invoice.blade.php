@@ -94,7 +94,10 @@
                 <div class="flex justify-center">
                   <div class="bg-black text-left py-7 px-5 w-full my-4 mx-4 sm:mx-20">
                     <div class="text-white">
-                      <h1 class="text-xs sm:text-base">January 23, 2023 - February 3, 2023</h1>
+                      <h1 class="text-xs sm:text-base">
+                        {{ \Carbon\Carbon::parse($reservation->checkin_date)->format('F j, Y') }}
+                        &nbsp; - &nbsp;{{ \Carbon\Carbon::parse($reservation->checkout_date)->format('F j, Y') }}
+                      </h1>
                     </div>
                   </div>
                 </div>
@@ -136,15 +139,17 @@
                     <div class="py-2 px-5 mb-3 sm:mb-0 w-full sm:w-1/2 sm:mx-10 sm:border-gray-400">
                       <div class="flex justify-between">
                         <label class="font-bold" for="check-in-date">Date Checked in: </label>
-                        <div class="pl-10">{{ $reservation->checkin_date }}</div>
+                        <div class="pl-10">{{ \Carbon\Carbon::parse($reservation->checkin_date)->format('F j, Y') }}</div>
+
                       </div>
                       <div class="flex justify-between">
                         <label class="font-bold" for="check-out-date">Date Checked out: </label>
-                        <div class="pl-10"> {{ $reservation->checkout_date }}</div>
+                        <div class="pl-10">{{ \Carbon\Carbon::parse($reservation->checkout_date)->format('F j, Y') }}</div>
+
                       </div>
                       <div class="flex justify-between">
                         <label class="font-bold" for="check-out-date">Nights: </label>
-                        <div class="pl-10"> {{ $reservation->night }}</div>
+                        <div class="pl-10"> {{ $reservation->nights }}</div>
                       </div>
                     </div>
                   </div>
@@ -161,7 +166,7 @@
                     </div>
                     <div class="w-full md:w-1/2 py-2 px-5 ">
                       <div class="justify-left">
-                        <div class=""> {{ $reservation->base_price }}</div>
+                        <div class=""> {{ number_format($reservation->base_price,0) }}</div>
                       </div>
                     </div>
                     <div class="w-full md:w-1/2 py-2 px-5">
@@ -171,7 +176,7 @@
                     </div>
                     <div class="w-full md:w-1/2 py-2 px-5">
                       <div class="justify-left">
-                        <div class="">{{ $reservation->extra_bedFee }}</div>
+                        <div class="">{{ number_format($reservation->guests_Fee,0)}}</div>
                       </div>
                     </div>
                   </div>
@@ -184,7 +189,7 @@
                     </div>
                     <div class="w-full md:w-1/2 py-2 px-5">
                       <div class="flex justify-between">
-                        <div class=" font-bold"> {{ $reservation->total_price }}</div>
+                        <div class=" font-bold"> {{ number_format($reservation->total_price, 0) }}</div>
                       </div>
                     </div>
                     <div class="w-full md:w-1/2 pb-10 py-2 px-5">
@@ -197,7 +202,6 @@
                     <div class="w-full md:w-1/2 py-2 px-5">
                       <div class="flex justify-between">
                         <div class=" font-bold">{{ $guestRegistration->department}}</div>
-                      
                       </div>
                     </div>
                   </div>
@@ -286,7 +290,7 @@
                             </div>
                             <div class="flex justify-between mb-4">
                               <p>Number of Guests:</p>
-                              <p>{{$reservation->num_guests}}</p>
+                              <p>{{$reservation->guests_num}}</p>
                             </div>
                             <div class="flex justify-between mb-4">
                               <p>Additional Bed:</p>
@@ -294,7 +298,7 @@
                             </div>
                             <div class="flex justify-between mb-4">
                               <p>Number of Nights:</p>
-                              <p>{{$reservation->night}}</p>
+                              <p>{{$reservation->nights}}</p>
                             </div>
                             <div class="flex justify-between mb-4">
                               <p>Date Checked in:</p>
@@ -313,18 +317,18 @@
                             <div class="border-t border-b border-black py-2 mb-4">
                               <div class="flex justify-between">
                                 <p>Unit Price:</p>
-                                <p>{{$reservation->base_price}}</p>
+                                <p>{{number_format($reservation->base_price,0)}}</p>
                               </div>
                               <div class="flex justify-between">
-                                <p>Additional Bed:</p>
-                                <p>{{ $reservation->extra_bedFee }}</p>
+                                <p>Additional Person:</p>
+                                <p>{{ number_format($reservation->guestsFee,0) }}</p>
                               </div>
                             </div>
 
                             <!-- Total -->
                             <div class="flex justify-between mb-4">
                               <p>Total:</p>
-                              <p>{{$reservation->total_price}}</p>
+                              <p>{{number_format($reservation->total_price,0)}}</p>
                             </div>
                           </div>
                           </div>

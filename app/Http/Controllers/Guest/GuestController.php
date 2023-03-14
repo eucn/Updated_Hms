@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers\Guest;
-use App\Http\Controllers\Controller;
+use DateTime;
 
+use Carbon\Carbon;
 use App\Models\Manage_Room;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GuestController extends Controller
 
@@ -19,7 +21,7 @@ class GuestController extends Controller
             'check_out_date.required' => 'The check-out date is required.',
             'check_out_date.after' => 'The check-out date must be after the check-in date.',
         ]);
-        // $roomIds = Manage_Room::pluck('id');
+    // $roomIds = Manage_Room::pluck('id
         $checkInDate = $request->input('check_in_date');
         $checkOutDate = $request->input('check_out_date');    
         $numberOfNights = $request->input('number_of_nights');
@@ -44,33 +46,38 @@ class GuestController extends Controller
         
         $room1 = Manage_Room::where('id', 1)->first();  
         $room2 = Manage_Room::where('id', 2)->first();
-        // $checkInDate = session('check_in_date');
-        // $checkOutDate = session('check_out_date');
-        // $isRoom1Reserved = $this->isRoomReserved($room1->id, $checkInDate, $checkOutDate);
-        // $isRoom2Reserved = $this->isRoomReserved($room2->id, $checkInDate, $checkOutDate);
+        $checkin_date = session('check_in_date');
+        $checkout_date = session('check_out_date');
+          // Format the session date using the date() function
+        $isRoom1Reserved = $this->isRoomReserved($room1->id, $checkin_date, $checkout_date);
+        $isRoom2Reserved = $this->isRoomReserved($room2->id, $checkin_date, $checkout_date);
     
         return view('dashboard',[
             'room1'=>$room1, 
             'room2'=>$room2,
-            // 'isRoom1Reserved'=>$isRoom1Reserved,
-            // 'isRoom2Reserved'=>$isRoom2Reserved,
+            'isRoom1Reserved'=>$isRoom1Reserved,
+            'isRoom2Reserved'=>$isRoom2Reserved,
         ]);
         
     }
 
-    // public function isRoomReserved($roomTypeId, $checkInDate, $checkOutDate)
-    // {
-    //     $reservations = Reservations::where('room_id', $roomTypeId)
-    //         ->where(function ($query) use ($checkInDate, $checkOutDate) {
-    //             $query->whereBetween('checkin_date', [$checkInDate, $checkOutDate])
-    //                 ->orWhereBetween('checkout_date', [$checkInDate, $checkOutDate])
-    //                 ->orWhere(function ($query) use ($checkInDate, $checkOutDate) {
-    //                     $query->where('checkin_date', '<=', $checkInDate)
-    //                         ->where('checkout_date', '>=', $checkOutDate);
-    //                 });
-    //         })->get();
-
-    //     return count($reservations) > 0;
-    // }
+    public function isRoomReserved($roomTypeId, $checkin_date, $checkout_date)
+    {
+        $checkInDateObj = new \DateTime($checkin_date);
+        $checkOutDateObj = new \DateTime($checkout_date);
+    
+        $reservations = Reservations::where('room_id', $roomTypeId)
+            ->where(function ($query) use ($checkInDateObj, $checkOutDateObj) {
+                $query->whereBetween('checkin_date', [$checkInDateObj, $checkOutDateObj])
+                    ->orWhereBetween('checkout_date', [$checkInDateObj, $checkOutDateObj])
+                    ->orWhere(function ($query) use ($checkInDateObj, $checkOutDateObj) {
+                        $query->where('checkin_date', '<=', $checkInDateObj)
+                            ->where('checkout_date', '>=', $checkOutDateObj);
+                    });
+            })->get();
+    
+        return count($reservations) > 0;
+    }
+    
     
 }

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Guest;
-use App\Models\Reservations;
+use Carbon\Carbon;
 use App\Models\Manage_Room;
 
+use App\Models\Reservations;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,11 +13,12 @@ class GuestReservationController extends Controller
     public function GuestViewRoom($room_id)
     {
         $rooms = Manage_Room::where('id', $room_id)->first();
+
         $checkin_date = session('check_in_date');
         $checkout_date = session('check_out_date');
-        $number_of_nights = session('number_of_nights');
+        $number_of_nights = session('number_of_nights'); 
 
-        return view('userGuest.room_info',
+       return view('userGuest.guest_room_info',
          [
          'check_in_date' => $checkin_date,
           'check_out_date' => $checkout_date,
@@ -25,9 +27,9 @@ class GuestReservationController extends Controller
         ]);
     }
     
-    public function GuestSaveReserve(Request $request) {
+    public function GuestSaveReserve(Request $request){
+        
         $guest_id  = auth()->user()->id;
-
         $numNights = $request->input('number_of_nights');
         $room_id = $request->input('room_id');
         $numGuests = $request->input('guest_num');
@@ -65,7 +67,7 @@ class GuestReservationController extends Controller
         $reservation->base_price = $roomPrice;
         $reservation->total_price = $totalPrice;
         $reservation->guests_num = $numGuests;
-        $reservation->guestsFee = $total_numGuestFee;
+        $reservation->guests_Fee = $total_numGuestFee;
         $reservation->extra_bed = $extraBed;
         $reservation->save();
 
