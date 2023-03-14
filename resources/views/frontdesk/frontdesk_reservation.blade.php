@@ -200,7 +200,6 @@
                           </option>
                           <option value="Queen Size" {{ old('room_type') == 'Queen' ? 'selected' : '' }}>Queen Size
                           </option>
-
                         </select>
                       </div>
                     </div>
@@ -210,12 +209,7 @@
                     <div class="flex flex-col lg:flex-row justify-center">
                       <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -145px; ">
                         <label class="" for="room_no">Room No:</label><br>
-                        <select class="w-full md:w-[475px]" name="room_no" id="room_no" value="{{ old('room_no') }}"
-                          placeholder="1 ">
-                          <option value="room1" {{ old('room_no') == 'room1' ? 'selected' : '' }}>1</option>
-                          <option value="room2" {{ old('room_no') == 'room2' ? 'selected' : '' }}> 2</option>
-
-                        </select>
+                        <input class="w-full md:w-[475px] py-1.5 border-2 border-gray-900" name="room_no" id="room_no" value="{{ $roomNo }}" readonly>
                       </div>
                     </div>
                   </div>
@@ -226,12 +220,12 @@
                           <div class=" py-2">
                             <label class="" for="room_no" style="position:relative; left: -265px; top: -65px;">Check-in
                               Date:</label><br>
-
                             <input
                               class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                               id="check_in_date" name="check_in_date" type="date"
                               style="width: 475px;height:50px;position:relative; left: -265px; top: -65px;border-color: gray;"
                               value="{{ old('check_in_date') }}">
+                              {{ $roomNo }}
                             {{-- <x-input-error :messages="$errors->get('check_in_date')" class="mt-2" /> --}}
                           </div>
                         </div>
@@ -243,7 +237,6 @@
                               <div class=" py-2">
                                 <label class="" for="room_no"
                                   style="position:relative; left: -265px; top: -65px;">Check-out Date:</label><br>
-
                                 <input
                                   class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                                   id="check_out_date" name="check_out_date" type="date"
@@ -285,32 +278,39 @@
                   @endif
                 </div>
 
-                
               </div>
 
               <div class="py-2">
-                      <p style ="position: relative; top: -150px; left: -95px; top: -285px;"class="text-medium font-semibold">Number of Guest</p>
-                      <div class="flex items-center justify-center">
-                          <a style ="position: relative; top: -150px; left: 215px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="add('guest_num')">+</a>
-                          <input  style ="position: relative; top: -150px; left: -225px; top: -285px; width: 410px;"readonly type="number" id="guest_num" name="guest_num" value="1"
-                              min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
-                          <a style ="position: relative; top: -150px; left: -670px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="subtract('guest_num')">-</a>
-                      </div>
-                  </div>
+                <p style="position: relative; top: -150px; left: -95px; top: -285px;" class="text-medium font-semibold">
+                  Number of Guest</p>
+                <div class="flex items-center justify-center">
+                  <a style="position: relative; top: -150px; left: 215px; top: -285px;"
+                    class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="add('guest_num')">+</a>
+                  <input style="position: relative; top: -150px; left: -225px; top: -285px; width: 410px;" readonly
+                    type="number" id="guest_num" name="guest_num" value="1" min="1"
+                    class="w-[200px] text-center text-gray-700 bg-white py-2">
+                  <a style="position: relative; top: -150px; left: -670px; top: -285px;"
+                    class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="subtract('guest_num')">-</a>
+                </div>
+              </div>
 
-                  <div class="py-2">
-                      <p style ="position: relative; top: -150px; left: 400px; top: -385px;" class="text-medium font-semibold">Extra Bed</p>
-                      <div class="flex items-center justify-center mt-2">
-                          <a style ="position: relative; top: -150px; left: 695px; top: -385px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="add('extra_bed')">+</a>
-                          <input style ="position: relative; top: -150px; left: 260px; top: -386px; width: 410px;" readonly type="number" id="extra_bed" name="extra_bed" value="1"
-                              min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
-                          <a style ="position: relative; top: -150px; left: -180px; top: -385px;"  class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="subtract('extra_bed')">-</a>
-                      </div>
-                  </div>
+              <div class="py-2">
+                <p style="position: relative; top: -150px; left: 400px; top: -385px;" class="text-medium font-semibold">
+                  Extra Bed</p>
+                <div class="flex items-center justify-center mt-2">
+                  <a style="position: relative; top: -150px; left: 695px; top: -385px;"
+                    class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="add('extra_bed')">+</a>
+                  <input style="position: relative; top: -150px; left: 260px; top: -386px; width: 410px;" readonly
+                    type="number" id="extra_bed" name="extra_bed" value="1" min="1"
+                    class="w-[200px] text-center text-gray-700 bg-white py-2">
+                  <a style="position: relative; top: -150px; left: -180px; top: -385px;"
+                    class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="subtract('extra_bed')">-</a>
+                </div>
+              </div>
 
               <!-- Guest Info -->
               <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
@@ -438,7 +438,7 @@
           <div class="flex justify-end mt-10">
 
             <!-- <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button> -->
-            <button type="button" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal"
+            <button type="submit" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal"
               data-bs-target="#modalDialogScrollable">
               Save
             </button>
@@ -513,22 +513,38 @@
       numberOfNights.value = diffDays;
     });
   </script>
-  
-      <script>
-        function subtract(inputId) {
-            var inputElement = document.getElementById(inputId);
-            var currentValue = parseInt(inputElement.value);
-            if (currentValue > 1) {
-                inputElement.value = currentValue - 1;
-            }
-        }
 
-        function add(inputId) {
-            var inputElement = document.getElementById(inputId);
-            var currentValue = parseInt(inputElement.value);
-            inputElement.value = currentValue + 1;
-        }
-    </script>
+{{-- num_guest & extra bed --}}
+  <script>
+    function subtract(inputId) {
+      var inputElement = document.getElementById(inputId);
+      var currentValue = parseInt(inputElement.value);
+      if (currentValue > 1) {
+        inputElement.value = currentValue - 1;
+      }
+    }
+
+    function add(inputId) {
+      var inputElement = document.getElementById(inputId);
+      var currentValue = parseInt(inputElement.value);
+      inputElement.value = currentValue + 1;
+    }
+  </script>
+  <script>
+    $(document).ready(function() {
+    $('#room_type').on('change', function() {
+      var selectedRoomType = $(this).val();
+      if(selectedRoomType == 'Single Size') {
+        $.get("/rooms?room_type=Single", function(data) {
+          $('#room_no').val(data[0].room_no); // assuming your room id column name is room_no
+        });
+      }
+    });
+  });
+
+  </script>
+
+  
 
 </body>
 
