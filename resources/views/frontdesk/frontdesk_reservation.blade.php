@@ -291,24 +291,24 @@
               <div class="py-2">
                       <p style ="position: relative; top: -150px; left: -95px; top: -285px;"class="text-medium font-semibold">Number of Guest</p>
                       <div class="flex items-center justify-center">
-                          <a style ="position: relative; top: -150px; left: 215px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="subtract('guest_num')">-</a>
+                          <a style ="position: relative; top: -150px; left: 215px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="add('guest_num')">+</a>
                           <input  style ="position: relative; top: -150px; left: -225px; top: -285px; width: 410px;"readonly type="number" id="guest_num" name="guest_num" value="1"
                               min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
-                          <a style ="position: relative; top: -150px; left: -670px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="add('guest_num')">+</a>
+                          <a style ="position: relative; top: -150px; left: -670px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="subtract('guest_num')">-</a>
                       </div>
                   </div>
 
                   <div class="py-2">
                       <p style ="position: relative; top: -150px; left: 400px; top: -385px;" class="text-medium font-semibold">Extra Bed</p>
                       <div class="flex items-center justify-center mt-2">
-                          <a style ="position: relative; top: -150px; left: 695px; top: -385px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="subtract('extra_bed')">-</a>
+                          <a style ="position: relative; top: -150px; left: 695px; top: -385px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="add('extra_bed')">+</a>
                           <input style ="position: relative; top: -150px; left: 260px; top: -386px; width: 410px;" readonly type="number" id="extra_bed" name="extra_bed" value="1"
                               min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
-                          <a style ="position: relative; top: -150px; left: -180px; top: -385px;"  class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
-                              onclick="add('extra_bed')">+</a>
+                          <a style ="position: relative; top: -150px; left: -180px; top: -385px;"  class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="subtract('extra_bed')">-</a>
                       </div>
                   </div>
 
