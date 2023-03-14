@@ -513,6 +513,22 @@
       numberOfNights.value = diffDays;
     });
   </script>
+  
+      <script>
+        function subtract(inputId) {
+            var inputElement = document.getElementById(inputId);
+            var currentValue = parseInt(inputElement.value);
+            if (currentValue > 1) {
+                inputElement.value = currentValue - 1;
+            }
+        }
+
+        function add(inputId) {
+            var inputElement = document.getElementById(inputId);
+            var currentValue = parseInt(inputElement.value);
+            inputElement.value = currentValue + 1;
+        }
+    </script>
 
 </body>
 
