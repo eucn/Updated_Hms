@@ -185,7 +185,11 @@
             <!-- Room Info -->
             <form action="" method="post">
               <div class="mx-auto mt-8" style="width:1000px;  position: relative; left: -110px;">
+<<<<<<< HEAD
                 <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 350px;">
+=======
+                <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 500px;">
+>>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                   <div class="border-b-2 border-gray-300 px-4 py-3">
                     <h3 class="text- sm:text-2xl font-semibold">Room Information</h3>
 
@@ -267,7 +271,11 @@
               <div class="grid grid-cols-1 mt-1">
                 <div class=" py-2 flex items-center">
                   <label style="position:relative; top: -80px; left: -95px;"
+<<<<<<< HEAD
                     class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Nights:</label>
+=======
+                    class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Night/s:</label>
+>>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                   <input type="" id="number_of_nights" name="number_of_nights"
                     style="font-weight: bold; position: relative; top: -80px; left: -95px;"
                     value="{{ old('number_of_nights') }}"
@@ -284,11 +292,45 @@
                   </div>
                   @endif
                 </div>
+<<<<<<< HEAD
               </div>
 
               <!-- Guest Info -->
               <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
                 style="width:1000px; position: relative; left: -110px;">
+=======
+
+                
+              </div>
+
+              <div class="py-2">
+                      <p style ="position: relative; top: -150px; left: -95px; top: -285px;"class="text-medium font-semibold">Number of Guest</p>
+                      <div class="flex items-center justify-center">
+                          <a style ="position: relative; top: -150px; left: 215px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="add('guest_num')">+</a>
+                          <input  style ="position: relative; top: -150px; left: -225px; top: -285px; width: 410px;"readonly type="number" id="guest_num" name="guest_num" value="1"
+                              min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
+                          <a style ="position: relative; top: -150px; left: -670px; top: -285px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="subtract('guest_num')">-</a>
+                      </div>
+                  </div>
+
+                  <div class="py-2">
+                      <p style ="position: relative; top: -150px; left: 400px; top: -385px;" class="text-medium font-semibold">Extra Bed</p>
+                      <div class="flex items-center justify-center mt-2">
+                          <a style ="position: relative; top: -150px; left: 695px; top: -385px;" class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="add('extra_bed')">+</a>
+                          <input style ="position: relative; top: -150px; left: 260px; top: -386px; width: 410px;" readonly type="number" id="extra_bed" name="extra_bed" value="1"
+                              min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
+                          <a style ="position: relative; top: -150px; left: -180px; top: -385px;"  class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                              onclick="subtract('extra_bed')">-</a>
+                      </div>
+                  </div>
+
+              <!-- Guest Info -->
+              <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
+                style="width:1000px; position: relative; left: -110px; top: -210px;">
+>>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                 <div class="border-b-2 border-gray-300 px-4 py-3">
                   <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
                 </div>
@@ -341,7 +383,11 @@
                 </div>
               </div>
               <!-- Payment Method -->
+<<<<<<< HEAD
               <div class="mx-auto mt-8" style="width:1000px; position: relative; left: -110px;">
+=======
+              <div class="mx-auto mt-8" style="width:1000px; position: relative; left: -110px; top: -210px;">
+>>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
                 <div class="bg-white rounded-lg shadow-md border-2 w-full ">
                   <div class="border-b-2 border-gray-300 px-4 py-3">
                     <h3 class="text- sm:text-2xl font-semibold">Payment Method</h3>
@@ -487,6 +533,25 @@
       numberOfNights.value = diffDays;
     });
   </script>
+<<<<<<< HEAD
+=======
+  
+      <script>
+        function subtract(inputId) {
+            var inputElement = document.getElementById(inputId);
+            var currentValue = parseInt(inputElement.value);
+            if (currentValue > 1) {
+                inputElement.value = currentValue - 1;
+            }
+        }
+
+        function add(inputId) {
+            var inputElement = document.getElementById(inputId);
+            var currentValue = parseInt(inputElement.value);
+            inputElement.value = currentValue + 1;
+        }
+    </script>
+>>>>>>> 2149ba50978d2b34fe8385a5a8c23aa2343162dd
 
 </body>
 
