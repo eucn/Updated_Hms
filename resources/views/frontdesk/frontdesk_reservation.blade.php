@@ -267,7 +267,7 @@
               <div class="grid grid-cols-1 mt-1">
                 <div class=" py-2 flex items-center">
                   <label style="position:relative; top: -80px; left: -95px;"
-                    class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Nights:</label>
+                    class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Night/s:</label>
                   <input type="" id="number_of_nights" name="number_of_nights"
                     style="font-weight: bold; position: relative; top: -80px; left: -95px;"
                     value="{{ old('number_of_nights') }}"
