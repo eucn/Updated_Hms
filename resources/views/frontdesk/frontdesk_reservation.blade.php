@@ -10,6 +10,11 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <script
+            data-require="jquery@3.1.1"
+            data-semver="3.1.1"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
   <!-- Favicons -->
   <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon">
   <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
@@ -182,7 +187,7 @@
                     <div class="justify-between mx-[50px]">
                       <!-- Room Info -->
                       <div class="mx-auto mt-8"  style="width:1000px;  position: relative; left: -110px;">
-                        <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 295px;">
+                        <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 350px;">
                           <div class="border-b-2 border-gray-300 px-4 py-3">
                             <h3 class="text- sm:text-2xl font-semibold">Room Information</h3>
                             
@@ -235,23 +240,47 @@
                
                   <input
                     class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
-                    id="check_in_date" name="check_out_date" type="date" style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray" value="{{ old('check_in_date') }}">
+                    id="check_out_date" name="check_out_date" type="date" style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray" value="{{ old('check_in_date') }}">
                     {{-- <x-input-error :messages="$errors->get('check_out_date')" class="mt-2" /> --}}
                 </div>
+
+                
               </div>
               </div>
+
+              
                             
                             </div>
                           </div>
                             
                             </div>
                           </div>
+                          
                             
                         </div>
                         </div>
-                   
-                     
-            <br>
+
+
+                        <div class="grid grid-cols-1 mt-1">
+                <div class=" py-2 flex items-center">
+                  <label style = "position:relative; top: -80px; left: -95px;"class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Nights:</label>
+                  <input type="" id="number_of_nights" name="number_of_nights" style="font-weight: bold; position: relative; top: -80px; left: -95px;" value="{{ old('number_of_nights') }}"
+                    class="bg-transparent pointer-events-none rounded py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
+                    readonly>
+
+                    @if ($errors->any())
+                <div class="alert alert-danger font-sm text-center">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+                </div>
+                </div>
+                
+       
                         <!-- Guest Info -->
                       <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4" style="width:1000px; position: relative; left: -110px;">
                         <div class="border-b-2 border-gray-300 px-4 py-3">
@@ -271,7 +300,7 @@
                         
                               <div class="px-4 md:px-6 py-3" style="position:relative; left: 10px;">
                                 <label class="" for="fullname">Full Name:&nbsp;<span class="text-red-700 font-bold">*</span></label>
-                                <input type="text" class="w-full md:w-[400px]" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="Full Name" required>  
+                                <input type="text" class="w-full md:w-[400px]" name="first_name" id="first_name" value="{{ old('first_name') }}" placeholder="First Name" required>  
                               </div>
                         
                               <div class="px-4 md:px-6 py-3" style="position:relative; left: -18px;">
@@ -293,7 +322,7 @@
                 
                           <div class="mx-4 sm:mx-10">
                             <label for="address">Phone Number&nbsp;<span class="text-red-700 font-bold">*</label><br>
-                            <input type="number"  name="phone_number" id="phone_number" value="{{ old('phone_number') }}" class="w-full sm:w-[200px]" placeholder="+63" required>                              
+                            <input type="number"  style="width: 950px;" name="phone_number" id="phone_number" value="{{ old('phone_number') }}" class="w-full sm:w-[200px]" placeholder="+63" required>                              
                             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
                           </div>
                         </div>
@@ -362,9 +391,10 @@
                           <div class="flex justify-end mt-10">
                             
                               <!-- <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button> -->
-                              <button type="button" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal" data-bs-target="#modalDialogScrollable" style="border-color: #E0C822;">
-                                CONTINUE
+                              <button type="button" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal" data-bs-target="#modalDialogScrollable" >
+                                Save
                                 </button>
+
                                 <!-- Modal -->
                                 <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
                                   <div class="modal-dialog modal-dialog-scrollable">
@@ -414,6 +444,29 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('template/assets/js/main.js') }}"></script>
+
+  {{-- script for date --}}
+    <script>
+      const check_in_date = document.getElementById('check_in_date');
+       const check_out_date = document.getElementById('check_out_date');
+      check_in_date.min = new Date().toISOString().split('T')[0];
+       check_out_date.min = new Date().toISOString().split('T')[0];
+
+    
+    </script>
+
+    <script>
+      const checkInDate = document.getElementById('check_in_date');
+      const checkOutDate = document.getElementById('check_out_date');
+      const numberOfNights = document.getElementById('number_of_nights');
+      checkOutDate.addEventListener('change', function() {
+        const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+        const checkIn = new Date(checkInDate.value);
+        const checkOut = new Date(checkOutDate.value);
+        const diffDays = Math.round(Math.abs((checkOut - checkIn) / oneDay));
+        numberOfNights.value = diffDays;
+      });
+    </script>
 
 </body>
 
