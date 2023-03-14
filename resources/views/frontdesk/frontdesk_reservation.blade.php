@@ -204,6 +204,117 @@
                         </select>
                       </div>
                     </div>
+<<<<<<< HEAD
+                    <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
+                      <div class="flex flex-col lg:flex-row justify-center">
+                        <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -145px; ">
+                          <div class="grid grid-cols-1 ">
+                            <div class=" py-2">
+                              <label class="" for="room_no"
+                                style="position:relative; left: -265px; top: -65px;">Check-out Date:</label><br>
+                              <input
+                                class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+                                id="check_out_date" name="check_out_date" type="date"
+                                style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray"
+                                value="{{ old('check_in_date') }}">
+                              {{-- <x-input-error :messages="$errors->get('check_out_date')" class="mt-2" /> --}}
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+
+
+                        <div class="grid grid-cols-1 mt-1">
+                <div class=" py-2 flex items-center">
+                  <label style = "position:relative; top: -80px; left: -95px;"class="block text-gray-900 font-medium mr-4" for="number-of-nights">Number of Nights:</label>
+                  <input type="" id="number_of_nights" name="number_of_nights" style="font-weight: bold; position: relative; top: -80px; left: -95px;" value="{{ old('number_of_nights') }}"
+                    class="bg-transparent pointer-events-none rounded py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:border-blue-500"
+                    readonly>
+
+                @if ($errors->any())
+                <div class="alert alert-danger font-sm text-center">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+                @endif
+              </div>
+            </div>
+          <div class="py-2">
+            <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+            onclick="subtract('guest_num')">-</a>
+         
+         <input readonly type="number" id="guest_num" name="guest_num" value="1"
+                min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
+         
+         <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+            onclick="add('guest_num')">+</a>
+         
+          </div>
+          </div>
+          <div class="py-2">
+            <p class="text-medium font-semibold">Extra Bed</p>
+            <div class="flex items-center justify-center mt-2">
+                <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-l shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="subtract('extra_bed')">-</a>
+                <input readonly type="number" id="extra_bed" name="extra_bed" value="1"
+                    min="1" class="w-[200px] text-center text-gray-700 bg-white py-2">
+                <a class="bg-gray-100 hover:bg-gray-400 text-gray-700 px-2 py-2 rounded-r shadow-md transition duration-300 ease-in-out cursor-pointer"
+                    onclick="add('extra_bed')">+</a>
+            </div>
+        </div>
+            <!-- Guest Info -->
+            <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
+              style="width:1000px; position: relative; left: -110px;">
+              <div class="border-b-2 border-gray-300 px-4 py-3">
+                <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
+              </div>
+              <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
+                <div class="flex flex-col lg:flex-row justify-center">
+                  <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 35px; height: 10px;">
+                    <label class="" for="salutation">Salutation:</label>
+                    <select class="w-full md:w-[125px]" name="salutation" id="salutation"
+                      value="{{ old('salutation') }}" placeholder="Ms.">
+                      <option value="Ms." {{ old('salutation') == 'Ms.' ? 'selected' : '' }}>Ms.</option>
+                      <option value="Mrs." {{ old('salutation') == 'Mrs.' ? 'selected' : '' }}>Mrs.</option>
+                      <option value="Mr." {{ old('salutation') == 'Mr.' ? 'selected' : '' }}>Mr.</option>
+                    </select>
+                  </div>
+                  <div class="px-4 md:px-6 py-3" style="position:relative; left: 10px;">
+                    <label class="" for="fullname">Full Name:&nbsp;<span class="text-red-700 font-bold">*</span></label>
+                    <input type="text" class="w-full md:w-[400px]" name="first_name" id="first_name"
+                      value="{{ old('first_name') }}" placeholder="First Name" required>
+                  </div>
+                  <div class="px-4 md:px-6 py-3" style="position:relative; left: -18px;">
+                    <label class="" for="lastname"></label>
+                    <input type="text" class="w-full md:w-[400px]" name="last_name" id="last_name"
+                      value="{{ old('last_name') }}" placeholder="Last Name" required>
+                  </div>
+                </div>
+                <div class="mx-4 sm:mx-10">
+                  <label for="companyName">Company Name</label>
+                  <input type="text" name="company_name" id="company_name" class="w-full"
+                    value="{{ old('company_name') }}" placeholder="Company Name">
+                </div>
+                <div class="mx-4 sm:mx-10">
+                  <label for="Address">Address&nbsp;<span class="text-red-700 font-bold">*</label>
+                  <input type="text" name="address" id="address" value="{{ old('address') }}" placeholder="Address"
+                    class="w-full" required>
+                </div>
+                <div class="mx-4 sm:mx-10">
+                  <label for="address">Phone Number&nbsp;<span class="text-red-700 font-bold">*</label><br>
+                  <input type="number" style="width: 950px;" name="phone_number" id="phone_number"
+                    value="{{ old('phone_number') }}" class="w-full sm:w-[200px]" placeholder="+63" required>
+                  <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+                </div>
+              </div>
+            </div>
+            <!-- Payment Method -->
+            <div class="mx-auto mt-8" style="width:1000px; position: relative; left: -110px;">
+              <div class="bg-white rounded-lg shadow-md border-2 w-full ">
+=======
                   </div>
 
                   <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
@@ -315,6 +426,7 @@
               <!-- Guest Info -->
               <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
                 style="width:1000px; position: relative; left: -110px; top: -210px;">
+>>>>>>> 74d70b52403b62b2d183a4548dcb5c987a2233a8
                 <div class="border-b-2 border-gray-300 px-4 py-3">
                   <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
                 </div>
@@ -514,6 +626,24 @@
     });
   </script>
 
+<<<<<<< HEAD
+  <script>
+    function subtract(inputId) {
+        var inputElement = document.getElementById(inputId);
+        var currentValue = parseInt(inputElement.value);
+        if (currentValue > 1) {
+            inputElement.value = currentValue - 1;
+        }
+    }
+
+    function add(inputId) {
+        var inputElement = document.getElementById(inputId);
+        var currentValue = parseInt(inputElement.value);
+        inputElement.value = currentValue + 1;
+    }
+  </script>
+=======
+>>>>>>> 74d70b52403b62b2d183a4548dcb5c987a2233a8
 </body>
 
 </html>
