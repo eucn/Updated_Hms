@@ -335,74 +335,64 @@
                         </td>
                         <td>
                           <form action="{{ route('admin.room.create') }}" method="POST">
-                              <a href="{{ route('admin.room.edit', $roomData->id) }}" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"><i class='fa fa-edit'></i></a>
-                              <!-- Modal -->
-                              <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form action="{{ route('admin.room.store') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
+                          
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $roomData->id }}">
+    Edit Record
+</button>
 
-                                        <div class="form-group mb-2">
-                                            <label>Room Number</label>
-                                            <input class="form-control" type="number" name="room_number">
-                                            <x-input-error :messages="$errors->get('room_number')"/>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Room Type</label>
-                                            <input class="form-control" type="text" name="room_type">
-                                            <x-input-error :messages="$errors->get('room_type')"/>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Description</label>
-                                            <input class="form-control" type="text" name="room_description">
-                                            <x-input-error :messages="$errors->get('room_description')"/>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Maximum Room Capacity</label>
-                                            <input class="form-control" type="number" name="max_capacity">
-                                            <x-input-error :messages="$errors->get('max_capacity')"/>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Amenities</label>
-                                            <input class="form-control" type="text" name="amenities">
-                                            <x-input-error :messages="$errors->get('amenities')"/>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Status</label>
-                                            <input class="form-control" type="text" name="status">
-                                            <x-input-error :messages="$errors->get('status')"/>
-                                            <!-- <select class="form-control" name="status">
-                                                <option value="available">Available</option>
-                                                <option value="unavailable">Unavailable</option>
-                                            </select> -->
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Rate</label>
-                                            <input class="form-control" type="number" name="rate">
-                                            <x-input-error :messages="$errors->get('rate')"/>
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label>Photos</label>
-                                            <input type="file" name="photos" id="photos">
-                                            <x-input-error :messages="$errors->get('photos')"/>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        <button type="reset" class="btn btn-primary">Reset</button>
-                                    </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary">Save Changes</button>
-                                    </div>
-                                  </div>
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal{{ $roomData->id }}" tabindex="-1" aria-labelledby="editModal{{ $roomData->id }}Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="/room/{{$roomData->id}}">
+                @csrf
+                @method('PUT')
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModal{{ $roomData->room_number }}Label">Edit Room</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+          
+                     <div class="form-group">
+                        <label for="name">Room Number</label>
+                        <input type="text" name="name" id="name" value="{{ $roomData->room_number }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="room_description">Description</label>
+                        <textarea name="description" class="form-control">{{ $roomData->room_description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="room_type">Room Type</label>
+                        <input type="text" name="room_type" class="form-control" value="{{ $roomData->room_type }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="max_capacity">Maximum Capacity</label>
+                        <input type="text" name="max_capacity" class="form-control" value="{{ $roomData->max_capacity }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="amenities">Amenities</label>
+                        <input type="text" name="amenities" class="form-control" value="{{ $roomData->amenities }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" name="status" class="form-control" value="{{ $roomData->status }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate">Rate</label>
+                        <input type="text" name="rate" class="form-control" value="{{ $roomData->rate }}">
+                    </div>
+                  
+                </div> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+      
+        </div>
+    </div>
+</div> 
+
                                 </div>
                               </div>
                               <form action="{{ route('admin.room.destroy', $roomData->id) }}" method="POST">
@@ -448,13 +438,31 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('template/assets/js/main.js') }}"></script>
 
-  <script>
-    function openModal() {
-        var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
-            keyboard: false
-        });
-        myModal.show();
-    }
+  <<script>
+  $(document).ready(function() {
+    $('#saveButton').click(function() {
+      var recordId = $('#exampleModal').data('id');
+      var updatedValue = $('#updatedValue').val();
+      
+      $.ajax({
+        type: 'PUT',
+        url: '/records/' + recordId,
+        data: {
+          _token: '{{ csrf_token() }}',
+          value: updatedValue
+        },
+        success: function(data) {
+          // Handle success response
+          $('#exampleModal').modal('hide');
+          location.reload();
+        },
+        error: function() {
+          // Handle error response
+        }
+      });
+    });
+  });
+</script>
 </script>
 
 </body>

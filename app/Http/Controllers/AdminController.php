@@ -165,6 +165,18 @@ class AdminController extends Controller
         $rooms = Manage_Room::all();
         return view('admin.admin_manage-rooms', ['rooms' => $rooms]);
     }
-
-
-}
+   
+    
+            public function store(Request $request)
+            {
+                $validatedData = $request->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Frontdesk::class],
+                    'password' => ['required', 'confirmed'],
+                ]);
+                $requestData = $request->all();
+                $fileName = time().$request->file('photos')->getClientOriginalName();
+                Manage_Room::create($requestData);
+                return redirect()->route('admin.frontdesk-List.index')->with('success', 'The record has been successfully added.');
+            }
+        }

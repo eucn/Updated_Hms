@@ -39,8 +39,14 @@ class ManageRoomController extends Controller
         return redirect()->route('admin.room.index')->with('success', 'The record has been successfully added.');
     }
 
-    public function edit(Manage_Room $room){
-        return redirect()->route('admin.room.index', compact('room'));
+    public function edit($id){
+{ 
+     
+    $room = manage_room::findOrFail($id);
+    return view('room_number', compact('room'));
+
+}
+
     }
      public function destroy($id)
      {
@@ -50,4 +56,28 @@ class ManageRoomController extends Controller
          return redirect()->route('admin.room.index')->with('success', 'Room has been deleted.')->with('rooms', $room);;
      }
 
+     public function update(Request $request, $id)
+{
+    $room = manage_room::findOrFail($id);
+
+    if ($room) {
+        $room->room_number = $request->input('room_number');
+        $room->room_description = $request->input('room_description');
+        $room->room_type = $request->input('room_type');
+        $room->max_capacity = $request->input('max_capacity');
+        $room->amenities = $request->input('amenities');
+        $room->status = $request->input('status');
+        $room->rate = $request->input('rate');
+    $room->update($request->all());
+        $room->save();
+
+        return redirect()->route('admin.room.index')->with('success', 'Room has been updated.')->with('room', $room);
+    }
+
+
 }
+
+}
+
+
+
