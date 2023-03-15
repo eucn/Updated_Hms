@@ -26,6 +26,11 @@
   <link href="{{ asset('template/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
   <link href="{{ asset('template/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('template/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+  <script src="{{ asset('template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('template/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
+
+<!-- Template Main JS File -->
+<script src="{{ asset('template/assets/js/main.js') }}"></script>
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('template/assets/css/style.css') }}" rel="stylesheet">
@@ -130,7 +135,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link nav-link-icon collapsed" href="#">
+        <a class="nav-link nav-link-icon collapsed" href="{{ route('admin.room.index') }}">
           <i class="fa-solid fa-bed icon-nav"></i>
           <span>Manage Rooms</span>
         </a>
@@ -191,6 +196,91 @@
         <div class="col-lg-12">
           <div class="row">
 
+  <div class="ml-auto">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ADD NEW
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="flex items-center justify-center min-h-screen bg-gray-100">
+                    <hr class="h-px mb-5 bg-[#55AFAB] border-0">
+
+                    <form method="POST" action="{{ route('frontdesk.register.create') }}">
+                    @csrf
+                    <div class="py-1">
+                        
+                        <span class="mb-2 text-sm font-semibold">Name <span class="text-red-500 text-sm ">*</span></span>
+                        <input type="text" name="name" :value="old('name')" required autofocus id="name" class="w-full p-1 border border-gray-300 rounded-md placeholder:font:light placeholder:text-gray-500 placeholder:text-sm py-1"
+                        placeholder="Enter your name" >
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
+
+                    <!-- <div class="py-1">
+                        <span class="mb-2 text-sm font-semibold">First Name</span>
+                        <input type="text" name="firstname" id="firstname" class="w-full p-1 border border-gray-300 rounded-md placeholder:font:light placeholder:text-gray-500 placeholder:text-sm py-1"
+                        placeholder="Enter your first name">
+                    </div>
+                    <div class="py-1">
+                        <span class="mb-2 text-sm font-semibold">Last Name</span>
+                        <input type="text" name="lastname" id="lastname" 
+                            class="w-full p-1 border border-gray-300 rounded-md placeholder:font:light placeholder:text-gray-500 placeholder:text-sm py-1"
+                        placeholder="Enter your last name">
+                    </div> -->
+                    <div class="py-1">
+                        <span class="mb-2 text-sm font-semibold">Email
+                            <span class="text-red-500 text-sm ">*</span> </span>
+                        <input type="email" name="email" :value="old('email')" required id="email"
+                            class="w-full p-1 border border-gray-300 rounded-md placeholder:font:light placeholder:text-gray-500 placeholder:text-sm py-1"
+                            placeholder="Enter your email">
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+                    <div class="py-1">
+                        <span class="mb-2 text-sm font-semibold">Password <span class="text-red-500 text-sm ">*</span></span>
+                        <input type="password" name="password"
+                            required autocomplete="new-password" id="password" 
+                            class="w-full p-1 border border-gray-300 rounded-md placeholder:font:light placeholder:text-gray-500
+                            placeholder:text-sm py-1"
+                            placeholder="Enter your password" >
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+                    <div class="py-1">
+                        <span class="mb-2 text-sm font-semibold">Confirm Password <span class="text-red-500 text-sm ">*</span></span>
+                        <input type="password" name="password_confirmation" required id="password"
+                            class="w-full p-1 border border-gray-300 rounded-md placeholder:font:light placeholder:text-gray-500 placeholder:text-sm py-1"
+                            placeholder="Confirm your password">
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+                    <x-input-error :messages="$errors->get('terms')" class="mt-2" />
+
+<div class="w-1/2 flex flex-col m-auto">
+    <button class="bg-[#E0C822]  text-white font-bold py-2 px-4 rounded">
+        Register
+    </button>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+<hr>
+
+
+
             <table class="table table-condensed table-sm table-bordered">   
                 <thead class="bg-[#36ae7c] text-white">   
                     <tr style="text-align:center">   
@@ -210,7 +300,7 @@
                         <td>{{ $frontdesk->created_at }}</td>                                  
                         <td>
                         <!--View Button-->	
-                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable">
+                        <button type="button" class="btn btn-primary" id="modal2" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable">
                               View
                               </button>
                           </td>  
@@ -233,8 +323,7 @@
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  
                                     </div>  
                                   </div> 
-                               </div>       
-                                                                  
+                               </div>                            
                     </tr>     
                     @endforeach
                 </tbody>   
@@ -270,6 +359,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('template/assets/js/main.js') }}"></script>
+
 
 </body>
 

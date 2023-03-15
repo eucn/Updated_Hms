@@ -47,18 +47,28 @@ Route::prefix('admin')->group(function (){
     Route::get('/guest-list', [AdminController::class, 'GuestList'])->name('admin.guestList');
     Route::get('/frontdesk-list', [AdminController::class, 'FrontdeskList'])->name('admin.frontdeskList');
     Route::get('/room-list', [AdminController::class, 'Rooms'])->name('admin.roomList');
+
+    // Create Frontdesk
     
   
 
     // Manage Rooms
     Route::prefix('room')->group(function () {
-            Route::get('/', [ManageRoomController::class, 'index'])->name('admin.room.index')->middleware('admin');;
-            Route::get('/create', [ManageRoomController::class, 'create'])->name('admin.room.create');
+            Route::get('/', [ManageRoomController::class, 'index'])->name('admin.room.index')->middleware('admin');
+             Route::get('/create', [ManageRoomController::class, 'create'])->name('admin.room.create');
             Route::post('/', [ManageRoomController::class, 'store'])->name('admin.room.store');
             Route::get('/{room}', [RoomController::class, 'show'])->name('admin.room.show');
-            Route::get('/{room}/edit', [RoomController::class, 'edit'])->name('admin.room.edit');
-            Route::put('/{room}', [RoomController::class, 'update'])->name('admin.room.update');
-            Route::delete('/{room}', [RoomController::class, 'destroy'])->name('admin.room.destroy');
+            Route::get('/room/edit', [ManageRoomController::class, 'edit'])->name('admin.room.edit');
+            Route::put('/{room}', [ManageRoomController::class, 'update'])->name('admin.room.update');
+            Route::delete('/{room}', [ManageRoomController::class, 'destroy'])->name('admin.room.destroy');
+            Route::put('/{room}', [ManageRoomController::class, 'update'])->name('admin.room.update');
+
+
+            
+          
+
+            // Route::delete('/admin_delete-rooms/{id}', [ManageRoomController::class, 'destroy'])->name('admin_delete-rooms.destroy');
+
         });
 
     // Rooms
@@ -125,5 +135,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

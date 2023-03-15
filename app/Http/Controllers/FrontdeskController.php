@@ -24,7 +24,7 @@ use Illuminate\Validation\Rules\Password;
 class FrontdeskController extends Controller
 {
     public function Index(){
-        return view('frontdesk.frontdesk_login');
+        return view('admin.admin_frontdesk-list');
     }
 
     public function Dashboard(){
@@ -76,7 +76,7 @@ class FrontdeskController extends Controller
 
         event(new Registered($frontdesk));
         // return redirect('/frontdesk/login');
-        return redirect()->route('frontdesk_login_form');
+        return redirect()->route('#');
     }
   
     public function FrontdeskBookingDetails(){
