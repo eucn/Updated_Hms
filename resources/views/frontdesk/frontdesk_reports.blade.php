@@ -174,9 +174,56 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
+                          <div class="flex flex-col lg:flex-row justify-center">
+                            <div class="mx-4 md:mx-4 py-3" style="position:relative; left: -388px; ">
+                                <label class="" for="room_type" >Status</label><br>
+                                <select class="w-full md:w-[220px]" name="room_type" id="room_type" value="{{ old('room_type') }}" placeholder="Completed">
+                                  <option value="Single Size" {{ old('room_type') == 'Completed' ? 'selected' : '' }}>Completed</option>
+                                  <option value="Queen Size" {{ old('room_type') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                  <option value="Queen Size" {{ old('room_type') == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                 
+                                 
+                                </select>   
+                              </div>
+                              </div>
+                      </div>
+                      <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
+                          <div class="flex flex-col lg:flex-row justify-center">
+                            <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -100px; ">
+                      <div class="grid grid-cols-1 ">
+                <div class=" py-2">
+                <label class="" for="room_no" style="position:relative; left: -390px; top: -60px;">Check-in Date:</label><br>
+               
+                  <input
+                    class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-grey-500"
+                    id="check_in_date" name="check_in_date" type="date" style="width: 220px;height:50px;position:relative; left: -390px; top: -58px; border-color: gray;" value="{{ old('check_in_date') }}">
+                    {{-- <x-input-error :messages="$errors->get('check_in_date')" class="mt-2" /> --}}
+                </div>
+              </div>
+              </div>
 
+              </div>
+                              </div>
+                      </div>
+                      <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
+                          <div class="flex flex-col lg:flex-row justify-center">
+                            <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -100px; ">
+                      <div class="grid grid-cols-1 ">
+                <div class=" py-2">
+                <label class="" for="room_no" style="position:relative; left: -120px; top: -230px;">Check-out Date:</label><br>
+               
+                  <input
+                    class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-grey-500"
+                    id="check_in_date" name="check_out_date" type="date" style="width: 220px;height:50px;position:relative; left: -130px; top: -225px; border-color: gray;" value="{{ old('check_in_date') }}">
+                    {{-- <x-input-error :messages="$errors->get('check_out_date')" class="mt-2" /> --}}
+                </div>
+              </div>
+              </div>
+
+             
   </main><!-- End #main -->
-
+  <hr style="border-top: 2px solid gray; position:relative;top: -400px;">
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">

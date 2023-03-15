@@ -6,6 +6,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontdeskController;
 use App\Http\Controllers\Admin\ManageRoomController;
 use App\Http\Controllers\Admin\MRoomController;
+use App\Http\Controllers\FrontdeskReservationController;
+use App\Http\Controllers\Guest\GuestController;
+use App\Http\Controllers\Guest\GuestReservationController;
+use App\Http\Controllers\Guest\GuestInformationController;
+use App\Http\Controllers\Guest\GuestInvoiceController;
+
+/*
 
 
 /*
@@ -91,38 +98,32 @@ Route::prefix('frontdesk')->group(function (){
 
     Route::get('/register', [FrontdeskController::class, 'FrontdeskRegister'])->name('frontdesk.register');
     Route::post('/register/create',[FrontdeskController::class, 'FrontdeskRegisterCreate'])->name('frontdesk.register.create');
-    Route::get('/reservation', [FrontdeskController::class, 'FrontdeskReservation'])->name('frontdesk.reservation');
+    Route::get('/reservation', [FrontdeskReservationController::class, 'FrontdeskReservation'])->name('frontdesk.reservation');
     Route::get('/bookingdetails', [FrontdeskController::class, 'FrontdeskBookingDetails'])->name('frontdesk.bookingdetails');
     Route::get('/reports', [FrontdeskController::class, 'FrontdeskReports'])->name('frontdesk.reports');
     Route::get('/payment', [FrontdeskController::class, 'FrontdeskPayment'])->name('frontdesk.payment');
 });
 //-------------- End Frontdesk Routes --------------//
 
-
-
 //-------------- Guest Routes --------------//
-Route::prefix('admin')->group(function (){
-    Route::get('/login',[AdminController::class, 'Index'])->name('login_form');
-    Route::post('/login/owner',[AdminController::class, 'Login'])->name('admin.login');
-    // Hindi pwedeng maview ang dashboard ng admin hanggat di nag login dahil nilagyan ko sya ng middleware
-    Route::get('/dashboard',[AdminController::class, 'Dashboard'])->name('admin.dashboard')->middleware('admin');
-    Route::get('/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
 
-    // Register
-    Route::get('/register', [AdminController::class, 'AdminRegister'])->name('admin.register');
-    Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');
+Route::post('/dashboard', [GuestController::class, 'GuestReservation'])->middleware(['auth', 'verified'])->name('store.date');
+Route::get('/dashboard', [GuestController::class, 'ViewDashboard'])->name('guest.dashboard');
+Route::post('/userGuest/room_info1/{room_id}', [GuestReservationController::class, 'GuestViewRoom'])->name('view.room1');
+Route::post('/userGuest/room_info2/{room_id}', [GuestReservationController::class, 'GuestViewRoom'])->name('view.room2');
 
-});
+Route::post('/userGuest/guest_registration', [GuestReservationController::class, 'GuestSaveReserve'])->name('save.reservation');
+Route::get('/userGuest/guest_registration', [GuestReservationController::class, 'ViewGuestInfo'])->name('registration.form');
+Route::post('/userGuest/guest_information', [GuestInformationController::class, 'GuestInfo'])->name('save.guest.info');
+
+Route::post('/userGuest/invoice', [GuestInformationController::class, 'GuestInfo'])->name('save.invoice');
+Route::get('/guest_users/invoice', [GuestInvoiceController::class, 'view_invoice'])->name('view.invoice');
+
 //-------------- End Guest Routes --------------//
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
