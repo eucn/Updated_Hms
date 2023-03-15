@@ -15,7 +15,7 @@ return new class extends Migration
             $table ->bigIncrements('id');
             $table ->unsignedBigInteger('frontdesk_id');
             $table ->unsignedBigInteger('room_id');
-            $table ->string('book_status');
+            $table ->string('booking_status');
             $table ->integer('nights');
             $table ->date('checkin_date');
             $table ->date('checkout_date');

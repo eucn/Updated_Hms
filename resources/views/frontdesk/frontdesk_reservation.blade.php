@@ -183,24 +183,24 @@
           <!-- Flex container -->
           <div class="justify-between mx-[50px]">
             <!-- Room Info -->
-            <form action="" method="post">
+            <form action="{{ route('frontdesk.reservation.create') }}" method="POST">
               <div class="mx-auto mt-8" style="width:1000px;  position: relative; left: -110px;">
                 <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 500px;">
                   <div class="border-b-2 border-gray-300 px-4 py-3">
                     <h3 class="text- sm:text-2xl font-semibold">Room Information</h3>
-
                   </div>
                   <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
                     <div class="flex flex-col lg:flex-row justify-center">
                       <div class="mx-4 md:mx-4 py-3" style="position:relative; left: -250px; ">
                         <label class="" for="room_type">Room Type:</label><br>
                         <select class="w-full md:w-[475px]" name="room_type" id="room_type"
-                          value="{{ old('room_type') }}" placeholder="Single Size">
-                          <option value="Single Size" {{ old('room_type') == 'Single' ? 'selected' : '' }}>Single Size
+                          value="{{ old('room_type') }}" placeholder="Single Size" >
+                          <option value="single-size" {{ old('room_type') == 'Single' ? 'selected' : '' }}>Single Size
                           </option>
-                          <option value="Queen Size" {{ old('room_type') == 'Queen' ? 'selected' : '' }}>Queen Size
+                          <option value="queen-size-bed" {{ old('room_type') == 'Queen' ? 'selected' : '' }}>Queen Size
                           </option>
                         </select>
+
                       </div>
                     </div>
                   </div>
@@ -209,7 +209,7 @@
                     <div class="flex flex-col lg:flex-row justify-center">
                       <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -145px; ">
                         <label class="" for="room_no">Room No:</label><br>
-                        <input class="w-full md:w-[475px] py-1.5 border-2 border-gray-900" name="room_no" id="room_no" value="" readonly>
+                        <input class=" form-controler first-letter:w-full md:w-[475px] py-1.5 border-2 border-gray-900" name="room_no" id="room_no" value="" readonly>
                       </div>
                     </div>
                   </div>
@@ -224,7 +224,7 @@
                               class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                               id="check_in_date" name="check_in_date" type="date"
                               style="width: 475px;height:50px;position:relative; left: -265px; top: -65px;border-color: gray;"
-                              value="{{ old('check_in_date') }}">
+                              value="{{ session('check_in_date') }}">
                               {{-- {{ $roomNo }} --}}
                             {{-- <x-input-error :messages="$errors->get('check_in_date')" class="mt-2" /> --}}
                           </div>
@@ -241,19 +241,15 @@
                                   class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                                   id="check_out_date" name="check_out_date" type="date"
                                   style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray"
-                                  value="{{ old('check_in_date') }}">
+                                  value="{{ session('check_in_date') }}">
                                 {{-- <x-input-error :messages="$errors->get('check_out_date')" class="mt-2" /> --}}
                               </div>
-
                             </div>
                           </div>
-
                         </div>
                       </div>
-
                     </div>
                   </div>
-
                 </div>
               </div>
 
@@ -277,9 +273,7 @@
                   </div>
                   @endif
                 </div>
-
               </div>
-
               <div class="py-2">
                 <p style="position: relative; top: -150px; left: -95px; top: -285px;" class="text-medium font-semibold">
                   Number of Guest</p>
@@ -295,7 +289,6 @@
                     onclick="subtract('guest_num')">-</a>
                 </div>
               </div>
-
               <div class="py-2">
                 <p style="position: relative; top: -150px; left: 400px; top: -385px;" class="text-medium font-semibold">
                   Extra Bed</p>
@@ -318,7 +311,6 @@
                 <div class="border-b-2 border-gray-300 px-4 py-3">
                   <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
                 </div>
-
                 <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
                   <div class="flex flex-col lg:flex-row justify-center">
                     <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 35px; height: 10px;">
@@ -330,34 +322,28 @@
                         <option value="Mr." {{ old('salutation') == 'Mr.' ? 'selected' : '' }}>Mr.</option>
                       </select>
                     </div>
-
                     <div class="px-4 md:px-6 py-3" style="position:relative; left: 10px;">
                       <label class="" for="fullname">Full Name:&nbsp;<span
                           class="text-red-700 font-bold">*</span></label>
                       <input type="text" class="w-full md:w-[400px]" name="first_name" id="first_name"
                         value="{{ old('first_name') }}" placeholder="First Name" required>
                     </div>
-
                     <div class="px-4 md:px-6 py-3" style="position:relative; left: -18px;">
                       <label class="" for="lastname"></label>
                       <input type="text" class="w-full md:w-[400px]" name="last_name" id="last_name"
                         value="{{ old('last_name') }}" placeholder="Last Name" required>
                     </div>
-
                   </div>
-
                   <div class="mx-4 sm:mx-10">
                     <label for="companyName">Company Name</label>
                     <input type="text" name="company_name" id="company_name" class="w-full"
                       value="{{ old('company_name') }}" placeholder="Company Name">
                   </div>
-
                   <div class="mx-4 sm:mx-10">
                     <label for="Address">Address&nbsp;<span class="text-red-700 font-bold">*</label>
                     <input type="text" name="address" id="address" value="{{ old('address') }}" placeholder="Address"
                       class="w-full" required>
                   </div>
-
                   <div class="mx-4 sm:mx-10">
                     <label for="address">Phone Number&nbsp;<span class="text-red-700 font-bold">*</label><br>
                     <input type="number" style="width: 950px;" name="phone_number" id="phone_number"
@@ -372,7 +358,6 @@
                   <div class="border-b-2 border-gray-300 px-4 py-3">
                     <h3 class="text- sm:text-2xl font-semibold">Payment Method</h3>
                   </div>
-
                   <div class="mx-4 sm:mx-10 pt-5 pb-10">
                     <div class="py-2">
                       <input class="mr-2" type="radio" name="payment_method" id="cash" value="Cash" required>
@@ -436,13 +421,12 @@
             </script>
           </div>
           <div class="flex justify-end mt-10">
-
             <!-- <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button> -->
             <button type="submit" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal"
               data-bs-target="#modalDialogScrollable">
               Save
             </button>
-
+          </form>
             <!-- Modal -->
             <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
               <div class="modal-dialog modal-dialog-scrollable">
@@ -530,22 +514,47 @@
       inputElement.value = currentValue + 1;
     }
   </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  {{-- <script>
+    // jQuery code
+    $(document).ready(function() {
+      if ($('#room_type').val() === 'single-size') {
+          $('#room_no').val('1');
+        } else {
+          $('#room_no').val('2');
+        }
+      $('#room_type').on('change', function() {
+        if ($(this).val() === 'single-size') {
+          $('#room_no').val('1');
+        } else {
+          $('#room_no').val('2');
+        }
+      });
+    });
+  </script>    --}}
   <script>
     $(document).ready(function() {
-    $('#room_type').on('change', function() {
-      var selectedRoomType = $(this).val();
-      if(selectedRoomType == 'Single Size') {
-        $.get("/rooms?room_type=Single", function(data) {
-          $('#room_no').val(data[0].room_no); // assuming your room id column name is room_no
+      $('#room_type').on('change', function() {
+        var roomType = $(this).val();
+        $.ajax({
+          url: '{{ route("frontdesk.reservation.create") }}',
+          method: 'POST',
+          data: {
+            '_token': '{{ csrf_token() }}',
+            'room_type': roomType
+          },
+          success: function(response) {
+            console.log(response.room_id);
+            $('#room_no').val(response.room_id);
+            console.log($('#room_no').val());
+          },
+          error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+          }
         });
-      }
+      });
     });
-  });
-
   </script>
-
   
-
 </body>
-
 </html>

@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontdeskController;
-use App\Http\Controllers\Admin\ManageRoomController;
 use App\Http\Controllers\Admin\MRoomController;
-use App\Http\Controllers\FrontdeskReservationController;
 use App\Http\Controllers\Guest\GuestController;
-use App\Http\Controllers\Guest\GuestReservationController;
-use App\Http\Controllers\Guest\GuestInformationController;
+use App\Http\Controllers\Admin\ManageRoomController;
 use App\Http\Controllers\Guest\GuestInvoiceController;
+use App\Http\Controllers\FrontdeskReservationController;
+use App\Http\Controllers\Guest\GuestInformationController;
+use App\Http\Controllers\Guest\GuestReservationController;
+use App\Models\Manage_Room;
 
 /*
 
@@ -89,9 +91,13 @@ Route::prefix('frontdesk')->group(function (){
     Route::get('/register', [FrontdeskController::class, 'FrontdeskRegister'])->name('frontdesk.register');
     Route::post('/register/create',[FrontdeskController::class, 'FrontdeskRegisterCreate'])->name('frontdesk.register.create');
     Route::get('/reservation', [FrontdeskReservationController::class, 'FrontdeskReservation'])->name('frontdesk.reservation');
+    Route::post('/reservation/create', [FrontdeskReservationController::class, 'FrontdeskReservationSave'])->name('frontdesk.reservation.create');
     Route::get('/bookingdetails', [FrontdeskController::class, 'FrontdeskBookingDetails'])->name('frontdesk.bookingdetails');
+      
     Route::get('/reports', [FrontdeskController::class, 'FrontdeskReports'])->name('frontdesk.reports');
     Route::get('/payment', [FrontdeskController::class, 'FrontdeskPayment'])->name('frontdesk.payment');
+
+
 });
 //-------------- End Frontdesk Routes --------------//
 
@@ -105,7 +111,6 @@ Route::post('/userGuest/room_info2/{room_id}', [GuestReservationController::clas
 Route::post('/userGuest/guest_registration', [GuestReservationController::class, 'GuestSaveReserve'])->name('save.reservation');
 Route::get('/userGuest/guest_registration', [GuestReservationController::class, 'ViewGuestInfo'])->name('registration.form');
 Route::post('/userGuest/guest_information', [GuestInformationController::class, 'GuestInfo'])->name('save.guest.info');
-
 Route::post('/userGuest/invoice', [GuestInformationController::class, 'GuestInfo'])->name('save.invoice');
 Route::get('/guest_users/invoice', [GuestInvoiceController::class, 'view_invoice'])->name('view.invoice');
 

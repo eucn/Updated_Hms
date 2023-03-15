@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('online_reservations', function (Blueprint $table) {
             $table ->bigIncrements('id');
             $table ->unsignedBigInteger('guest_id');
             $table ->unsignedBigInteger('room_id');
-            $table ->string('book_status');
+            $table ->string('booking_status');
             $table ->integer('nights');
             $table ->date('checkin_date');
             $table ->date('checkout_date');
@@ -25,12 +25,12 @@ return new class extends Migration
             $table ->integer('guestsFee');
             $table ->integer('extra_bed');
             $table->timestamps();
-             $table->foreign('room_id')
-                  ->references('id')->on('manage_room')
-                  ->onDelete('cascade');
-            $table->foreign('guest_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+            //  $table->foreign('room_id')
+            //       ->references('id')->on('manage_room')
+            //       ->onDelete('cascade');
+            // $table->foreign('guest_id')
+            //       ->references('id')->on('users')
+            //       ->onDelete('cascade');
         });
     }
 
