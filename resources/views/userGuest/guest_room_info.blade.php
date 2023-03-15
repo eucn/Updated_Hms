@@ -74,7 +74,7 @@
                     <div class="flex item-center">
                         <h2 class="text-[30px] text-[#4C4C4C] font-bold ml-7">Room 
                             <input type="text" class="border-none bg-none text-[30px] w-10 h-8" 
-                             value="{{ $rooms->id }}" name="room_id" style="background-color: transparent;">
+                            value="{{ $rooms->id }}" name="room_id" style="background-color: transparent;" readonly>
                         </h2>
                     </div>
                 
@@ -190,6 +190,11 @@
                                         <button type="submit"
                                             class="bg-yellow-500 hover:bg-yellow-600  text-white active:bg-yellow-800 font-bold uppercase text-sm px-[80px] py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                             id="next">Book Now</button>
+                                    </div>
+                                    <div>
+                                        @if(session('error'))
+                                            <div class="alert alert-danger">{{ session('error') }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </form>

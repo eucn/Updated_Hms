@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Guest;
 use Carbon\Carbon;
 use App\Models\Manage_Room;
-
+use Illuminate\Support\Facades\Session;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class GuestReservationController extends Controller
 {
@@ -28,64 +29,26 @@ class GuestReservationController extends Controller
     }
     
     public function GuestSaveReserve(Request $request){
-        
         $guest_id  = auth()->user()->id;
+        
         $numNights = $request->input('number_of_nights');
         $room_id = $request->input('room_id');
         $numGuests = $request->input('guest_num');
         $extraBed = $request->input('extra_bed');
-        $booking_status = 'pending';
-        $roomPrice = Manage_Room::where('id', $room_id)->value('rate');
-        $add_numGuests = 300;
-        if ($numNights > 1) {
-            $total_roomPrice = $roomPrice * $numNights;
-        } else {
-            $total_roomPrice = $roomPrice;
-        }
-
-        if ($numGuests > 1) {
-           $numGuestFee = $add_numGuests *  $numGuests;
-        } else {
-            $numGuestFee  = 0;
-        }
-        $total_numGuestFee =  $numGuestFee ;
-        $totalPrice = $total_roomPrice +  $total_numGuestFee;
-
         $checkIn = $request->input('check_in_date');
         $checkOut = $request->input('check_out_date');
-
-        $checkin_date = date('Y-m-d', strtotime($checkIn));
-        $checkout_date = date('Y-m-d', strtotime($checkOut));
-
-        $reservation = new Reservations();
-        $reservation->guest_id = $guest_id;
-        $reservation->room_id = $room_id;
-        $reservation->booking_status = $booking_status; 
-        $reservation->nights = $numNights;
-        $reservation->checkin_date = $checkin_date;
-        $reservation->checkout_date = $checkout_date;
-        $reservation->base_price = $roomPrice;
-        $reservation->total_price = $totalPrice;
-        $reservation->guests_num = $numGuests;
-        $reservation->guests_Fee = $total_numGuestFee;
-        $reservation->extra_bed = $extraBed;
-        $reservation->save();
-
-        // if ($room_id == 1 || $room_id == 2) {
-        //     Manage_Room::where('id', $room_id)->update(['status_update' => 'Not Available']);
-        // }
-
-        $request->session()->put('resevations', [
-            'checkin_date' => $request->input('checkin_date'),
-            'checkout_date' => $request->input('checkout_date'),
-            'number_of_nights' => $request->input('number_of_nights')
-        ]);
-        $request->session()->forget('resevation');
-
+            
+            Session::put('number_of_nights',$numNights);
+            Session::put('room_id', $room_id);
+            Session::put('guest_num',$numGuests);
+            Session::put('extra_bed',$extraBed);
+            Session::put('check_in_date', $checkIn);
+            Session::put('check_out_date', $checkOut);
+            
         return redirect()->route('registration.form');
     }
     public function ViewGuestInfo() {
-
-        return view('userGuest.guest_registration');
+  
+        return view('userGuest.guest_registration', );
     } 
 }

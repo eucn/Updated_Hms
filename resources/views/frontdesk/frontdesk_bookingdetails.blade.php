@@ -226,10 +226,9 @@
                       <td scope="col">{{ $data->first_name }} &nbsp; {{ $data->last_name }}</td>
                       <td scope="col">{{ $data->payment_method }}</td>
                       <td scope="col">{{ $data->booking_status }}</td>
-                      <td scope="col"> {{ \Carbon\Carbon::parse($data->checkin_date)->format('M j') }} &nbsp; - &nbsp;
+                      <td scope="col"> {{ \Carbon\Carbon::parse($data->checkin_date)->format('F j, Y') }} &nbsp; - &nbsp;
                         {{ \Carbon\Carbon::parse($data->checkout_date)->format('F j, Y') }}
                       </td> 
-                 
                       <td scope="col"></td>
                   </tr>
               @endforeach
