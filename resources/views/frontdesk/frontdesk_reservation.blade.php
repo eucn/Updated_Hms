@@ -209,7 +209,7 @@
                     <div class="flex flex-col lg:flex-row justify-center">
                       <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -145px; ">
                         <label class="" for="room_no">Room No:</label><br>
-                        <input class="w-full md:w-[475px] py-1.5 border-2 border-gray-900" name="room_no" id="room_no" value="{{ $roomNo }}" readonly>
+                        <input class="w-full md:w-[475px] py-1.5 border-2 border-gray-900" name="room_no" id="room_no" value="" readonly>
                       </div>
                     </div>
                   </div>
@@ -225,7 +225,7 @@
                               id="check_in_date" name="check_in_date" type="date"
                               style="width: 475px;height:50px;position:relative; left: -265px; top: -65px;border-color: gray;"
                               value="{{ old('check_in_date') }}">
-                              {{ $roomNo }}
+                              {{-- {{ $roomNo }} --}}
                             {{-- <x-input-error :messages="$errors->get('check_in_date')" class="mt-2" /> --}}
                           </div>
                         </div>
