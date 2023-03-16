@@ -104,6 +104,7 @@ class GuestInformationController extends Controller
             $guestInformation = new GuestInformation();
             $guestInformation->guest_id = $guest_id;
             $guestInformation->reservation_id = $reservation_id;
+            $reservation->booking_types = 'Online';
             $guestInformation->salutation = $salutation;
             $guestInformation->first_name = $first_name;
             $guestInformation->last_name = $last_name;  

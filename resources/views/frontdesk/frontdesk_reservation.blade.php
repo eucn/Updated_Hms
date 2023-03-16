@@ -40,6 +40,8 @@
   <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"
     integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous">
   </script>
+  {{-- Script for Select Room_types --}}
+ 
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.0
@@ -97,7 +99,6 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{ route('frontdesk.logout') }}">
                 <i class="bi bi-box-arrow-right"></i>
@@ -178,12 +179,23 @@
 
     <hr style="border-top: 2px solid #3C4048;position: relative; left: 8px;">
     <section class="col-md-11 mx-auto">
+      {{-- <div class="justify-between mx-[50px]">   --}}
+              @if(session()->has('error'))
+              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center" role="alert">
+                <strong>{{ session('error') }}</strong>
+            </div>
+            @endif
+            @if(session()->has('success'))
+              <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center" role="alert">
+                  <strong>{{ session('success') }}</strong>
+              </div>
+          @endif
+      {{-- </div>  --}}
       <div class="container  px-4 sm:px-6 lg:px-8">
-        <form>
           <!-- Flex container -->
           <div class="justify-between mx-[50px]">
             <!-- Room Info -->
-            <form action="{{ route('frontdesk.reservation.create') }}" method="POST">
+            <form method="POST" action="{{ route('frontdesk.reservation.save') }}" >
               <div class="mx-auto mt-8" style="width:1000px;  position: relative; left: -110px;">
                 <div class="bg-white rounded-lg shadow-md border-2 w-full " style="height: 500px;">
                   <div class="border-b-2 border-gray-300 px-4 py-3">
@@ -193,23 +205,28 @@
                     <div class="flex flex-col lg:flex-row justify-center">
                       <div class="mx-4 md:mx-4 py-3" style="position:relative; left: -250px; ">
                         <label class="" for="room_type">Room Type:</label><br>
-                        <select class="w-full md:w-[475px]" name="room_type" id="room_type"
+                        {{-- <select class="w-full md:w-[475px]" name="room_type" id="room_type"
                           value="{{ old('room_type') }}" placeholder="Single Size" >
                           <option value="single-size" {{ old('room_type') == 'Single' ? 'selected' : '' }}>Single Size
                           </option>
                           <option value="queen-size-bed" {{ old('room_type') == 'Queen' ? 'selected' : '' }}>Queen Size
                           </option>
-                        </select>
-
+                        </select> --}}
+                        <select class="w-full md:w-[475px]" name="room_type" id="room_type">
+                          @foreach ($room_type as $roomType)
+                              <option value="{{ $roomType }}" {{ old('room_type') == $roomType ? 'selected' : '' }}>
+                                  {{ ucfirst($roomType) }} Size
+                              </option>
+                          @endforeach
+                      </select>
                       </div>
                     </div>
                   </div>
-
                   <div class="space-y-4 font-regular text-base sm:text-lg pb-10 ">
                     <div class="flex flex-col lg:flex-row justify-center">
                       <div class="mx-4 md:mx-4 py-3" style="position:relative; left: 250px; top: -145px; ">
                         <label class="" for="room_no">Room No:</label><br>
-                        <input class=" form-controler first-letter:w-full md:w-[475px] py-1.5 border-2 border-gray-900" name="room_no" id="room_no" value="" readonly>
+                        <input class="first-letter:w-full md:w-[475px] py-1.5 border-2 text-center border-gray-900" name="room_no" id="room_no" value="{{ old('room_no') }}" readonly>
                       </div>
                     </div>
                   </div>
@@ -224,7 +241,7 @@
                               class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                               id="check_in_date" name="check_in_date" type="date"
                               style="width: 475px;height:50px;position:relative; left: -265px; top: -65px;border-color: gray;"
-                              value="{{ session('check_in_date') }}">
+                              value="{{ old('check_in_date') }}">
                               {{-- {{ $roomNo }} --}}
                             {{-- <x-input-error :messages="$errors->get('check_in_date')" class="mt-2" /> --}}
                           </div>
@@ -241,7 +258,7 @@
                                   class="w-full border-gray-900  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                                   id="check_out_date" name="check_out_date" type="date"
                                   style="width: 475px;height:50px;position:relative; left: -265px; top: -65px; border-color: gray"
-                                  value="{{ session('check_in_date') }}">
+                                  value="{{ old('check_out_date') }}">
                                 {{-- <x-input-error :messages="$errors->get('check_out_date')" class="mt-2" /> --}}
                               </div>
                             </div>
@@ -305,8 +322,8 @@
                 </div>
               </div>
 
-              <!-- Guest Info -->
-              <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
+             <!-- Guest Info -->
+            <div class="bg-white rounded-lg border-2 shadow-md w-full pb-4"
                 style="width:1000px; position: relative; left: -110px; top: -210px;">
                 <div class="border-b-2 border-gray-300 px-4 py-3">
                   <h3 class="text- sm:text-2xl font-semibold">Guest Information</h3>
@@ -401,33 +418,19 @@
                         <label for="department_lacj">School of Liberal Arts and Criminal Justice</label>
                       </div>
                     </div>
-                  </div>
-            </form>
-            <script>
-              $(document).ready(function() {
-                // Listen for changes in the payment method radio buttons
-                $('input[name=payment_method]').change(function() {
-                  if ($(this).val() === 'Cash') {
-                    // If cash is selected, unselect the department charge and hide its options
-                    $('input[name=payment_method_dept]').prop('checked', false);
-                    $('#department_charge_options').hide();
-                  } else if ($(this).val() === 'Department Charge') {
-                    // If department charge is selected, unselect the cash and show its options
-                    $('input[name=payment_method_cash]').prop('checked', false);
-                    $('#department_charge_options').show();
-                  }
-                });
-              });
-            </script>
-          </div>
+                  </div> 
+            </div>
           <div class="flex justify-end mt-10">
+            <button type="submit" class="btn btn-primary" style="background-color: #E0C822 " >
+            Save
+          </button>
             <!-- <button  class="bg-yellow-500 text-white active:bg-yellow-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Continue</button> -->
             <button type="submit" class="btn btn-primary" style="background-color: #E0C822 " data-bs-toggle="modal"
               data-bs-target="#modalDialogScrollable">
-              Save
+              continue
             </button>
           </form>
-            <!-- Modal -->
+            {{-- <!-- Modal -->
             <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
               <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -443,11 +446,9 @@
                 </div>
               </div>
             </div>
-
           </div>
-      </div>
-      </div>
-      </form>
+      {{-- </div> --}}
+      </div> 
       </div>
     </section>
 
@@ -476,85 +477,33 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('template/assets/js/main.js') }}"></script>
-
-  {{-- script for date --}}
-  <script>
-    const check_in_date = document.getElementById('check_in_date');
-    const check_out_date = document.getElementById('check_out_date');
-    check_in_date.min = new Date().toISOString().split('T')[0];
-    check_out_date.min = new Date().toISOString().split('T')[0];
-  </script>
-
-  <script>
-    const checkInDate = document.getElementById('check_in_date');
-    const checkOutDate = document.getElementById('check_out_date');
-    const numberOfNights = document.getElementById('number_of_nights');
-    checkOutDate.addEventListener('change', function() {
-      const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
-      const checkIn = new Date(checkInDate.value);
-      const checkOut = new Date(checkOutDate.value);
-      const diffDays = Math.round(Math.abs((checkOut - checkIn) / oneDay));
-      numberOfNights.value = diffDays;
-    });
-  </script>
-
-{{-- num_guest & extra bed --}}
-  <script>
-    function subtract(inputId) {
-      var inputElement = document.getElementById(inputId);
-      var currentValue = parseInt(inputElement.value);
-      if (currentValue > 1) {
-        inputElement.value = currentValue - 1;
-      }
-    }
-
-    function add(inputId) {
-      var inputElement = document.getElementById(inputId);
-      var currentValue = parseInt(inputElement.value);
-      inputElement.value = currentValue + 1;
-    }
-  </script>
+  {{-- Public Js File --}}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  {{-- <script>
-    // jQuery code
-    $(document).ready(function() {
-      if ($('#room_type').val() === 'single-size') {
-          $('#room_no').val('1');
-        } else {
-          $('#room_no').val('2');
-        }
-      $('#room_type').on('change', function() {
-        if ($(this).val() === 'single-size') {
-          $('#room_no').val('1');
-        } else {
-          $('#room_no').val('2');
-        }
-      });
-    });
-  </script>    --}}
+  <script src="{{ asset('js/frontdeskReservation.js') }}"></script>
   <script>
-    $(document).ready(function() {
-      $('#room_type').on('change', function() {
-        var roomType = $(this).val();
-        $.ajax({
-          url: '{{ route("frontdesk.reservation.create") }}',
-          method: 'POST',
-          data: {
-            '_token': '{{ csrf_token() }}',
-            'room_type': roomType
-          },
-          success: function(response) {
-            console.log(response.room_id);
-            $('#room_no').val(response.room_id);
-            console.log($('#room_no').val());
-          },
-          error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-          }
+      $(document).ready(function() {
+        $('#room_type').on('change', function() {
+            var roomType = $(this).val();
+            $.ajax({
+                url: '{{ route("frontdesk.reservation.create") }}',
+                method: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'room_type': roomType
+                },
+                success: function(response) {
+                    if (response.room_id) {
+                        $('#room_no').val(response.room_id);
+                    } else {
+                        console.log('Room ID not found in response');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
         });
-      });
     });
   </script>
-  
 </body>
 </html>

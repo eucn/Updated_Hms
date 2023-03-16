@@ -24,7 +24,7 @@ use Illuminate\Validation\Rules\Password;
 class FrontdeskController extends Controller
 {
     public function Index(){
-        return view('admin.admin_frontdesk-list');
+        return view('frontdesk.frontdesk_login');
     }
 
     public function Dashboard(){
