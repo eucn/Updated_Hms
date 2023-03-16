@@ -78,12 +78,19 @@
 
                 </section> --}}
             <section>
-              
                 <div class="container mx-auto pt-10 px-4 sm:px-6 lg:px-8">
                     <form method="POST" action="{{ route('save.guest.info') }}"> 
                         @csrf
                       <!-- Flex container -->
-                      <div class="justify-between mx-[50px]">
+                      <div class="justify-between mx-[50px]">  
+                        <div>
+                              @if(session()->has('error'))
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center" role="alert">
+                                <strong>{{ session('error') }}</strong>
+                            </div>
+                        @endif
+                      </div> 
+                    
                         <!-- Logo -->
                         <div class="justify-center my-5">
                           <h2 class="text-[18px] sm:text-2xl font-semibold">Make Reservation</h2>
@@ -178,7 +185,7 @@
                                 </div>
                               </div>
                             </div>
-                            
+
                             <script>
                             $(document).ready(function() {
                               // Listen for changes in the payment method radio buttons

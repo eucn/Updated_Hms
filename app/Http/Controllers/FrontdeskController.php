@@ -79,7 +79,17 @@ class FrontdeskController extends Controller
         return view('frontdesk.frontdesk_reservation');
     }
     public function FrontdeskBookingDetails(){
+<<<<<<< HEAD
         return view('frontdesk.frontdesk_bookingdetails');
+=======
+        $reservations = GuestInformation::join('reservations', 'guest_information.reservation_id', '=', 'reservations.id')
+        ->join('manage_rooms', 'reservations.room_id', '=', 'manage_rooms.id')
+        ->select('guest_information.first_name','guest_information.last_name', 'guest_information.payment_method','reservations.booking_status', 'reservations.checkin_date','reservations.total_price', 'reservations.checkout_date',)
+        ->get();
+        return view('frontdesk.frontdesk_bookingdetails', [
+            'reservationData' => $reservations,
+        ]);
+>>>>>>> cb341ca5542f72e9d474dbcf14d00fbc57064cab
     }
     public function FrontdeskReports(){
         return view('frontdesk.frontdesk_reports');
