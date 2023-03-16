@@ -2,29 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Frontdesk;
+use Illuminate\Http\Request;
 
 //Login
-use Illuminate\View\View;
-use App\Models\Reservations;
-use Illuminate\Http\Request;
-use App\Models\GuestInformation;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 //Register
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
-use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Auth\Events\Registered;
+use App\Models\Frontdesk;
 
 class FrontdeskController extends Controller
 {
     public function Index(){
-        return view('admin.admin_frontdesk-list');
+        return view('frontdesk.frontdesk_login');
     }
 
     public function Dashboard(){
@@ -76,22 +73,13 @@ class FrontdeskController extends Controller
 
         event(new Registered($frontdesk));
         // return redirect('/frontdesk/login');
-        return redirect()->route('#');
+        return redirect()->route('frontdesk_login_form');
     }
-  
+    public function FrontdeskReservation(){
+        return view('frontdesk.frontdesk_reservation');
+    }
     public function FrontdeskBookingDetails(){
-        
-        $count = 1000000;
-        $reservations = GuestInformation::join('reservations', 'guest_information.reservation_id', '=', 'reservations.id')
-        ->join('manage_rooms', 'reservations.room_id', '=', 'manage_rooms.id')
-        ->select('guest_information.first_name','guest_information.last_name', 'guest_information.payment_method','reservations.booking_status', 'reservations.checkin_date','reservations.total_price', 'reservations.checkout_date',)
-        ->get();
-        $numbers = range(1, $count);
-        return view('frontdesk.frontdesk_bookingdetails', [
-            'reservationData' => $reservations,
-            'numbers' => $numbers,
-        ]);
-
+        return view('frontdesk.frontdesk_bookingdetails');
     }
     public function FrontdeskReports(){
         return view('frontdesk.frontdesk_reports');
