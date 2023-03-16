@@ -13,6 +13,8 @@ use App\Http\Controllers\FrontdeskReservationController;
 use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\GuestReservationController;
 use App\Models\Manage_Room;
+use App\Http\Controllers\Guest\PDFController;
+use App\Http\Controllers\Admin\BookingHistoryController;
 
 /*
 
@@ -57,14 +59,17 @@ Route::prefix('admin')->group(function (){
             Route::get('/', [ManageRoomController::class, 'index'])->name('admin.room.index')->middleware('admin');
              Route::get('/create', [ManageRoomController::class, 'create'])->name('admin.room.create');
             Route::post('/', [ManageRoomController::class, 'store'])->name('admin.room.store');
-            Route::get('/{room}', [RoomController::class, 'show'])->name('admin.room.show');
+            // Route::get('/{room}', [ManageRoomController::class, 'show'])->name('admin.room.show');
             Route::get('/room/edit', [ManageRoomController::class, 'edit'])->name('admin.room.edit');
             Route::put('/{room}', [ManageRoomController::class, 'update'])->name('admin.room.update');
             Route::delete('/{room}', [ManageRoomController::class, 'destroy'])->name('admin.room.destroy');
             Route::put('/{room}', [ManageRoomController::class, 'update'])->name('admin.room.update');
 
-
+    Route::prefix('booking-history')->group(function () {
+            Route::get('/', [BookingHistoryController::class, 'index'])->name('admin.bookingHistory')->middleware('admin');;
+            Route::get('/filter', [BookingHistoryController::class, 'filter'])->name('admin.filter-history');
             
+        });
           
 
             // Route::delete('/admin_delete-rooms/{id}', [ManageRoomController::class, 'destroy'])->name('admin_delete-rooms.destroy');

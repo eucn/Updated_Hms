@@ -10,6 +10,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Favicons -->
   <link href="{{ asset('template/assets/img/favicon.png') }}" rel="icon">
   <link href="{{ asset('template/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
@@ -38,6 +40,8 @@
       integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp"
       crossorigin="anonymous">
     </script>
+  
+  
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.0
@@ -123,7 +127,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{{ route('admin.dashboard') }}">
+        <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -137,7 +141,7 @@
       </li><!-- End Manage Rooms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('admin.bookingHistory') }}">
+        <a class="nav-link " href="{{ route('admin.bookingHistory') }}">
           <i class="fa-regular fa-file icon-nav"></i>
           <span>Booking History</span>
         </a>
@@ -175,11 +179,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Booking History</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Booking History</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -191,68 +195,66 @@
         <div class="col-lg-12">
           <div class="row">
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card sales-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Registered Guest Users</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-user"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{ $totalGuest }}</h6>
-                      <a href="{{ route('admin.guestList') }}">View</a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card revenue-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Registered Frontdesk Users</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-user"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{ $totalFrontdesk }}</h6>
-                      <a href="{{ route('admin.frontdeskList') }}">View</a>
-                    </div>
-                  </div>
+            <form class="flex justify-end">
+              <div class=" space-y-1">
+                <label for="start-date" class="text-gray-600 font-medium">Filter</label>
+                <input type="date" id="start-date" name="start-date" class="px-4 py-2 h-[30px] border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               </div>
 
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Rooms Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card room-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Rooms</h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fa-solid fa-bed"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{ $totalRoom }}</h6>
-                      <a href="{{ route('admin.roomList') }}">View</a>
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <form method="GET" action="{{ route('admin.filter-history') }}">
+                  <label for="filter">Select time range:</label>
+                  <select id="filter" name="filter">
+                    <option value="today">Today</option>
+                    <option value="yesterday">Yesterday</option>
+                    <option value="last-7-days">Last 7 Days</option>
+                    <option value="last-14-days">Last 14 Days</option>
+                    <option value="last-30-days">Last 30 Days</option>
+                  </select>
+                  <button type="submit">Filter</button>
+                </form>
 
               </div>
-            </div><!-- End Room Card -->
+{{-- 
+              <div class=" space-y-1">
+                <label for="end-date" class="text-gray-600 font-medium">End date:</label>
+                <input type="date" id="end-date" name="end-date" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              </div> --}}
+
+              {{-- <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Filter</button> --}}
+            </form>
+
+            <table class="table table-condensed table-sm table-bordered">   
+                <thead class="bg-[#36ae7c] text-white">   
+                    <tr style="text-align:center">   
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Booked at</th>
+                        <th scope="col">Booking Status</th>
+                        <th scope="col">Check-in/Check-out</th>
+                        <th scope="col">Room Type</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Rate</th>
+                    </tr>   
+                </thead>   
+                <tbody>   
+                  @foreach($bookings as $index => $booking)
+                    <tr style="text-align:center">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $booking-> first_name }} {{ $booking-> last_name }}</td>
+                        <td>{{ $booking-> created_at->format('M j, Y') }}</td>
+                        <td>{{ $booking-> booking_status }}</td>
+                        <td>{{ $booking->checkin_date->format('M j, Y') }} - {{ $booking->checkout_date->format('M j, Y') }}</td>
+                        <td>{{ $booking-> room_type }}</td>
+                        <td>{{ $booking-> rate }}</td>
+                        <td>{{ $booking-> total_price }}</td>
+                        
+                    
+                        
+                    </tr>
+                  @endforeach
+                </tbody>   
+            </table>
 
           </div>
         </div><!-- End Left side columns -->
@@ -286,5 +288,4 @@
   <script src="{{ asset('template/assets/js/main.js') }}"></script>
 
 </body>
-
 </html>
