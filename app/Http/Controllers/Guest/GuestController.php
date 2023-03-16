@@ -43,7 +43,6 @@ class GuestController extends Controller
         return redirect()->route('guest.dashboard');  
     }
     public function ViewDashboard( ){
-        
         $room1 = Manage_Room::where('id', 1)->first();  
         $room2 = Manage_Room::where('id', 2)->first();
         $checkin_date = session('check_in_date');
@@ -51,16 +50,13 @@ class GuestController extends Controller
           // Format the session date using the date() function
         $isRoom1Reserved = $this->isRoomReserved($room1->id, $checkin_date, $checkout_date);
         $isRoom2Reserved = $this->isRoomReserved($room2->id, $checkin_date, $checkout_date);
-    
         return view('dashboard',[
             'room1'=>$room1, 
             'room2'=>$room2,
             'isRoom1Reserved'=>$isRoom1Reserved,
             'isRoom2Reserved'=>$isRoom2Reserved,
         ]);
-        
     }
-
     public function isRoomReserved($roomTypeId, $checkin_date, $checkout_date)
     {
         $checkInDateObj = new \DateTime($checkin_date);

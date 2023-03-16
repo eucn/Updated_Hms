@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table ->unsignedBigInteger('guest_id');
             $table ->unsignedBigInteger('reservation_id');
+            $table ->string('booking_types');
             $table ->string('salutation');
             $table ->string('first_name');
             $table ->string('last_name');
